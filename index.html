@@ -1,0 +1,2020 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10100f">
+<meta name="description" content="Discover an exquisite collection of luxury Arabian perfumes, rare oud, and timeless fragrances.">
+<title>ZAYRŪN — The Art of Fragrance</title>
+
+<style>
+/* ========================================
+   ZAYRŪN — LUXURY PERFUME HOUSE
+   Self-contained HTML, CSS & JavaScript
+======================================== */
+
+:root {
+  --bg: #10100f;
+  --bg-soft: #171715;
+  --surface: #1d1c19;
+  --text: #f4f0e8;
+  --muted: #a5a095;
+  --gold: #c6a66b;
+  --gold-light: #e5cf9f;
+  --line: rgba(198,166,107,.22);
+  --header: rgba(16,16,15,.82);
+  --serif: "Times New Roman", Georgia, serif;
+  --sans: "Arial", Helvetica, sans-serif;
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+body.light {
+  --bg: #f5f1e9;
+  --bg-soft: #ece5d8;
+  --surface: #fffdf8;
+  --text: #24211c;
+  --muted: #746c60;
+  --gold: #98743c;
+  --gold-light: #b58d4d;
+  --line: rgba(117,87,42,.24);
+  --header: rgba(245,241,233,.88);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  transition: background .45s, color .45s;
+  overflow-x: hidden;
+}
+
+body, button, a { -webkit-tap-highlight-color: transparent; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+button, a { touch-action: manipulation; }
+
+button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 5px;
+}
+
+::selection {
+  background: var(--gold);
+  color: #15130f;
+}
+
+.container {
+  width: min(1280px, 88%);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 27px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.ar {
+  font-family: Tahoma, Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+.gold { color: var(--gold); }
+
+.serif { font-family: var(--serif); font-weight: 400; }
+
+.btn {
+  min-height: 49px;
+  padding: 0 25px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: #17140f;
+  font-size: 10px;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .3s, color .3s, transform .3s;
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.btn-outline:hover {
+  background: var(--gold);
+  color: #17140f;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* ANNOUNCEMENT */
+
+.announcement {
+  min-height: 31px;
+  display: grid;
+  place-items: center;
+  padding: 6px 15px;
+  background: var(--gold);
+  color: #17140f;
+  font-size: 9px;
+  letter-spacing: .19em;
+  text-align: center;
+}
+
+/* HEADER */
+
+.header {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  background: var(--header);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  min-height: 83px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-family: var(--serif);
+  font-size: 31px;
+  letter-spacing: .19em;
+  line-height: 1;
+}
+
+.brand-sub {
+  font-size: 8px;
+  letter-spacing: .32em;
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(17px, 2.5vw, 36px);
+}
+
+.nav-links a {
+  position: relative;
+  padding-block: 10px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: color .3s;
+}
+
+.nav-links a::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 100%;
+  bottom: 2px;
+  height: 1px;
+  background: var(--gold);
+  transition: right .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--text); }
+
+.nav-links a:hover::after,
+.nav-links a.active::after { right: 0; }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon-btn {
+  position: relative;
+  width: 35px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 18px;
+  transition: color .3s;
+}
+
+.icon-btn:hover { color: var(--gold); }
+
+.cart-count {
+  position: absolute;
+  top: 0;
+  right: -4px;
+  min-width: 15px;
+  height: 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #16130e;
+  font-size: 9px;
+}
+
+.language-btn {
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 10px;
+  letter-spacing: .12em;
+  cursor: pointer;
+}
+
+.menu-btn { display: none; }
+
+/* HERO */
+
+.hero {
+  position: relative;
+  min-height: min(770px, calc(100svh - 114px));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero::before {
+  position: absolute;
+  content: "";
+  z-index: -2;
+  width: min(760px, 85vw);
+  aspect-ratio: 1;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-45%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 45%,
+      rgba(198,166,107,.20),
+      rgba(117,83,41,.08) 34%,
+      transparent 69%);
+  animation: breathe 8s ease-in-out infinite alternate;
+}
+
+.hero::after {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--bg) 0%, transparent 75%),
+    repeating-linear-gradient(
+      115deg,
+      transparent 0,
+      transparent 90px,
+      rgba(198,166,107,.025) 91px,
+      transparent 92px
+    );
+  pointer-events: none;
+}
+
+.hero-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  align-items: center;
+  gap: 35px;
+  padding-block: 95px;
+}
+
+.hero-copy { position: relative; z-index: 2; }
+
+.hero h1 {
+  margin: 26px 0;
+  max-width: 720px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(55px, 7.8vw, 112px);
+  line-height: .96;
+  letter-spacing: -.055em;
+}
+
+.hero h1 em {
+  display: block;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.hero-description {
+  max-width: 410px;
+  margin: 27px 0 34px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2.1;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.text-link span {
+  color: var(--gold);
+  transition: transform .3s;
+}
+
+.text-link:hover span { transform: translateX(5px); }
+
+.hero-art {
+  position: relative;
+  min-height: 450px;
+  display: grid;
+  place-items: center;
+}
+
+.orbit {
+  position: absolute;
+  width: min(430px, 90%);
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  animation: orbit 40s linear infinite;
+}
+
+.orbit::before,
+.orbit::after {
+  position: absolute;
+  content: "";
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+
+.orbit::before { inset: 22px; }
+.orbit::after { inset: 56px; }
+
+.orbit-dot {
+  position: absolute;
+  top: 15%;
+  right: 20%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 20px var(--gold);
+}
+
+.bottle-stage {
+  position: relative;
+  width: 220px;
+  height: 305px;
+  display: grid;
+  place-items: center;
+  animation: float 5s ease-in-out infinite;
+  filter: drop-shadow(0 30px 40px rgba(0,0,0,.28));
+}
+
+.bottle {
+  position: relative;
+  width: 155px;
+  height: 205px;
+  margin-top: 52px;
+  border: 1px solid rgba(230,206,157,.78);
+  border-radius: 17px 17px 27px 27px;
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,.42),
+      rgba(198,166,107,.16) 23%,
+      rgba(255,255,255,.09) 44%,
+      rgba(0,0,0,.28) 100%),
+    linear-gradient(180deg, #6e4d29, #17130e 72%);
+  box-shadow:
+    inset 0 0 0 6px rgba(198,166,107,.07),
+    inset 8px 0 14px rgba(255,255,255,.07),
+    0 0 70px rgba(198,166,107,.10);
+}
+
+.bottle::before {
+  position: absolute;
+  content: "";
+  width: 62px;
+  height: 39px;
+  left: 45px;
+  top: -39px;
+  background: linear-gradient(90deg,#342b1d,#b99a60 35%,#6c542d 80%,#241e15);
+  border: 1px solid rgba(229,207,159,.6);
+  border-radius: 5px 5px 2px 2px;
+}
+
+.bottle::after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: -52px;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 13px;
+  border: 1px solid var(--gold);
+  border-radius: 4px 4px 0 0;
+  background: #252017;
+}
+
+.bottle-label {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 61px;
+  min-height: 82px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(198,166,107,.58);
+  color: #e5cf9f;
+  text-align: center;
+}
+
+.bottle-label strong {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: .13em;
+}
+
+.bottle-label small {
+  font-size: 7px;
+  letter-spacing: .21em;
+}
+
+.art-caption {
+  position: absolute;
+  bottom: 7%;
+  right: 0;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+
+.hero-index {
+  position: absolute;
+  bottom: 27px;
+  left: 6%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .18em;
+}
+
+.hero-index::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* MARQUEE */
+
+.marquee {
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.marquee-track span {
+  padding: 0 30px;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 16px;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.marquee-track i {
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* SECTION COMMON */
+
+.section { padding-block: 115px; }
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 25px;
+  margin-bottom: 48px;
+}
+
+.section-heading h2,
+.story h2,
+.newsletter h2 {
+  margin: 17px 0 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(37px, 5vw, 62px);
+  line-height: 1.05;
+  letter-spacing: -.035em;
+}
+
+.section-heading p {
+  max-width: 360px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 2;
+}
+
+/* COLLECTION */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 22px;
+}
+
+.product-card { min-width: 0; }
+
+.product-visual {
+  position: relative;
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(198,166,107,.12), transparent 58%),
+    var(--bg-soft);
+  border: 1px solid var(--line);
+}
+
+.product-visual::before {
+  position: absolute;
+  content: "";
+  width: 75%;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  transition: transform .8s var(--ease);
+}
+
+.product-visual:hover::before { transform: scale(1.14); }
+
+.product-number {
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .18em;
+}
+
+.product-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: var(--gold);
+  font-size: 8px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.mini-bottle {
+  position: relative;
+  z-index: 1;
+  width: 107px;
+  height: 150px;
+  margin-top: 23px;
+  border: 1px solid rgba(224,199,146,.75);
+  border-radius: 12px 12px 20px 20px;
+  background: linear-gradient(90deg,#191610,#73572d 25%,#2d2417 70%,#0e0e0d);
+  box-shadow: 0 25px 45px rgba(0,0,0,.25), inset 5px 0 10px rgba(255,255,255,.08);
+  transition: transform .55s var(--ease);
+}
+
+.product-visual:hover .mini-bottle { transform: translateY(-9px) rotate(-3deg); }
+
+.mini-bottle::before {
+  content: "";
+  position: absolute;
+  left: 33px;
+  top: -26px;
+  width: 39px;
+  height: 26px;
+  border: 1px solid var(--gold);
+  background: linear-gradient(90deg,#272117,#bba06d,#34291a);
+  border-radius: 4px 4px 0 0;
+}
+
+.mini-bottle::after {
+  content: "";
+  position: absolute;
+  top: 43px;
+  left: 9px;
+  right: 9px;
+  height: 56px;
+  border: 1px solid rgba(224,199,146,.58);
+  background: rgba(0,0,0,.12);
+}
+
+.product-card:nth-child(2) .mini-bottle {
+  width: 123px;
+  height: 138px;
+  border-radius: 5px 5px 25px 25px;
+  background: linear-gradient(90deg,#111,#343a35 30%,#131715 75%);
+}
+
+.product-card:nth-child(3) .mini-bottle {
+  width: 92px;
+  height: 158px;
+  border-radius: 28px 28px 12px 12px;
+  background: linear-gradient(90deg,#352315,#b0874b 27%,#4c351d 72%,#21180e);
+}
+
+.product-info { padding: 21px 2px 0; }
+
+.product-category {
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.product-title {
+  margin: 10px 0 8px;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.product-ar {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 16px;
+}
+
+.product-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+
+.price {
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+
+.add-btn {
+  width: 37px;
+  height: 37px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--gold);
+  font-size: 20px;
+  cursor: pointer;
+  transition: background .3s, color .3s;
+}
+
+.add-btn:hover {
+  background: var(--gold);
+  color: #15130f;
+}
+
+/* CRAFT / STORY */
+
+.story {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 9%;
+}
+
+.story-art {
+  min-height: 475px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 55%, rgba(198,166,107,.17), transparent 52%),
+    linear-gradient(135deg, var(--bg-soft), var(--bg));
+}
+
+.story-ring {
+  position: absolute;
+  width: 75%;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+
+.story-ring::before,
+.story-ring::after {
+  content: "";
+  position: absolute;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+
+.story-ring::before { inset: 18px; }
+.story-ring::after { inset: 43px; }
+
+.story-monogram {
+  position: relative;
+  z-index: 1;
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: clamp(95px, 15vw, 170px);
+  letter-spacing: -.1em;
+}
+
+.story-copy { padding-block: 60px; }
+
+.story h2 { margin-bottom: 25px; }
+
+.story-copy p {
+  max-width: 440px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2.2;
+  margin-bottom: 28px;
+}
+
+.story-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 36px 0;
+}
+
+.stat strong {
+  display: block;
+  font-family: var(--serif);
+  color: var(--gold);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.stat span {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+/* NOTES */
+
+.notes { text-align: center; }
+
+.notes .eyebrow { justify-content: center; }
+
+.notes h2 {
+  max-width: 650px;
+  margin: 22px auto 50px;
+  font-family: var(--serif);
+  font-size: clamp(38px,5.3vw,67px);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.note {
+  padding: 33px 15px;
+}
+
+.note + .note { border-left: 1px solid var(--line); }
+
+.note-symbol {
+  margin-bottom: 17px;
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 30px;
+}
+
+.note h3 {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.note p {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.9;
+}
+
+/* NEWSLETTER */
+
+.newsletter {
+  padding-block: 85px;
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(198,166,107,.10), transparent 60%),
+    var(--bg-soft);
+  text-align: center;
+}
+
+.newsletter .eyebrow { justify-content: center; }
+
+.newsletter h2 {
+  margin: 20px auto 14px;
+  max-width: 620px;
+}
+
+.newsletter p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.newsletter-form {
+  width: min(450px,100%);
+  display: flex;
+  margin: 28px auto 0;
+  border-bottom: 1px solid var(--gold);
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 16px 4px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 11px;
+}
+
+.newsletter-form button {
+  padding: 0 15px;
+  border: 0;
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 10px;
+  letter-spacing: .1em;
+}
+
+/* FOOTER */
+
+.footer {
+  padding-top: 65px;
+  background: var(--bg);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 35px;
+  padding-bottom: 55px;
+}
+
+.footer-brand {
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.footer-description {
+  max-width: 270px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 2;
+}
+
+.footer h4 {
+  margin: 4px 0 23px;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+
+.footer-links {
+  display: grid;
+  gap: 15px;
+}
+
+.footer-links a {
+  width: fit-content;
+  color: var(--muted);
+  font-size: 11px;
+  transition: color .3s;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-bottom {
+  min-height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .06em;
+}
+
+/* TOAST */
+
+.toast {
+  position: fixed;
+  z-index: 300;
+  bottom: 25px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  width: max-content;
+  max-width: calc(100% - 30px);
+  padding: 15px 22px;
+  border: 1px solid var(--gold);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 11px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s, transform .3s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ANIMATIONS */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-13px); }
+}
+
+@keyframes orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes breathe {
+  from { opacity: .65; transform: translateY(-45%) scale(.96); }
+  to { opacity: 1; transform: translateY(-45%) scale(1.06); }
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* RTL */
+
+html[dir="rtl"] .eyebrow { letter-spacing: 0; }
+html[dir="rtl"] .eyebrow::before { order: 2; }
+html[dir="rtl"] .product-number { left: auto; right: 17px; }
+html[dir="rtl"] .product-tag { right: auto; left: 15px; }
+html[dir="rtl"] .nav-links a::after { left: 100%; right: 0; }
+html[dir="rtl"] .nav-links a:hover::after,
+html[dir="rtl"] .nav-links a.active::after { left: 0; }
+html[dir="rtl"] .hero::after {
+  background:
+    linear-gradient(270deg, var(--bg) 0%, transparent 75%),
+    repeating-linear-gradient(
+      65deg, transparent 0, transparent 90px,
+      rgba(198,166,107,.025) 91px, transparent 92px
+    );
+}
+html[dir="rtl"] .hero-index { left: auto; right: 6%; }
+html[dir="rtl"] .product-bottom { flex-direction: row; }
+html[dir="rtl"] .note + .note {
+  border-left: 0;
+  border-right: 1px solid var(--line);
+}
+html[dir="rtl"] .text-link:hover span { transform: translateX(-5px); }
+html[dir="rtl"] .marquee-track { animation-direction: reverse; }
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  .nav { gap: 14px; }
+  .nav-links { gap: 17px; }
+  .nav-actions { gap: 8px; }
+  .hero-grid { grid-template-columns: 1.05fr .95fr; }
+  .hero-art { min-height: 370px; }
+  .products { gap: 15px; }
+  .product-visual { min-height: 270px; }
+  .footer-top { grid-template-columns: 1.3fr 1fr 1fr; }
+  .footer-top > div:last-child { grid-column: 2; }
+}
+
+@media (max-width: 760px) {
+  .container { width: 90%; }
+
+  .nav { min-height: 72px; }
+  .brand-name { font-size: 26px; }
+  .nav-actions { gap: 5px; }
+  .menu-btn { display: grid; }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 10px 5%;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity .25s, transform .25s, visibility .25s;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    padding: 17px 4px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero { min-height: auto; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-block: 75px 80px;
+  }
+
+  .hero h1 { font-size: clamp(61px, 13vw, 94px); }
+  .hero-description { max-width: 430px; }
+  .hero-art { min-height: 355px; }
+  .bottle-stage { transform: scale(.9); }
+  .art-caption { bottom: 0; right: 3%; }
+  .hero-index { bottom: 17px; }
+
+  .section { padding-block: 78px; }
+  .section-heading { align-items: flex-start; flex-direction: column; }
+  .products { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 26px 14px; }
+  .product-visual { min-height: 245px; }
+  .product-title { font-size: 21px; }
+  .product-ar { font-size: 14px; }
+
+  .story-grid { grid-template-columns: 1fr; gap: 0; }
+  .story-art { min-height: 350px; }
+  .story-copy { padding-block: 60px 75px; }
+
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 35px 22px; }
+  .footer-top > div:last-child { grid-column: auto; }
+}
+
+@media (max-width: 430px) {
+  .announcement { font-size: 8px; letter-spacing: .1em; }
+  .brand-name { font-size: 22px; letter-spacing: .14em; }
+  .brand-sub { font-size: 7px; }
+  .nav-actions { gap: 2px; }
+  .icon-btn { width: 30px; }
+  .language-btn { font-size: 9px; }
+  .hero h1 { font-size: 59px; }
+  .hero-art { min-height: 320px; }
+  .products { grid-template-columns: 1fr; }
+  .product-visual { min-height: 315px; }
+  .product-card { max-width: none; }
+  .note-grid { grid-template-columns: 1fr; }
+  .note + .note {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  html[dir="rtl"] .note + .note {
+    border-right: 0;
+  }
+  .story-stats { gap: 24px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; justify-content: center; padding-block: 20px; text-align: center; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="announcement" data-i18n="announcement">
+  COMPLIMENTARY DELIVERY ON ORDERS OVER SAR 350
+</div>
+
+<header class="header">
+  <div class="container nav">
+
+    <a class="brand" href="index.html" aria-label="ZAYRŪN home">
+      <span class="brand-name">ZAYRŪN</span>
+      <span class="brand-sub" data-i18n="brandSub">THE ART OF FRAGRANCE</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a class="active" href="index.html" data-i18n="navHome">Home</a>
+      <a href="shop.html" data-i18n="navShop">Collection</a>
+      <a href="about.html" data-i18n="navAbout">Our Story</a>
+      <a href="contact.html" data-i18n="navContact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="language-btn" id="languageToggle"
+        aria-label="Switch language">عربي</button>
+
+      <button class="icon-btn" id="themeToggle"
+        aria-label="Switch color theme" title="Switch theme">
+        <span id="themeIcon" aria-hidden="true">☼</span>
+      </button>
+
+      <a class="icon-btn" href="cart.html" aria-label="Shopping cart">
+        <span aria-hidden="true">♧</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+
+      <button class="icon-btn menu-btn" id="menuToggle"
+        aria-label="Open navigation" aria-expanded="false">
+        <span id="menuIcon" aria-hidden="true">☰</span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+
+      <div class="hero-copy">
+        <div class="eyebrow reveal" data-i18n="heroEyebrow">
+          A SIGNATURE OF DISTINCTION
+        </div>
+
+        <h1 class="reveal">
+          <span data-i18n="heroLine1">Beyond</span>
+          <em data-i18n="heroLine2">the Senses.</em>
+        </h1>
+
+        <p class="hero-description reveal" data-i18n="heroDescription">
+          Fragrances crafted for those who leave an impression without
+          saying a word. Discover the meeting of rare ingredients,
+          Arabian heritage and modern elegance.
+        </p>
+
+        <div class="hero-actions reveal">
+          <a href="shop.html" class="btn">
+            <span data-i18n="explore">Explore Collection</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a href="#story" class="text-link">
+            <span data-i18n="discoverStory">Discover Our Story</span>
+            <span aria-hidden="true">↘</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Abstract luxury perfume bottle illustration">
+        <div class="orbit"><span class="orbit-dot"></span></div>
+
+        <div class="bottle-stage">
+          <div class="bottle">
+            <div class="bottle-label">
+              <strong>ZAYRŪN</strong>
+              <small>EAU DE PARFUM</small>
+              <small>COLLECTION Nº 01</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="art-caption" data-i18n="heroCaption">
+          AN OBJECT OF DESIRE · Nº 001
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-index" data-i18n="heroIndex">
+      EST. IN ELEGANCE — 001 / 006
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>THE ART OF OUD <i>✳</i></span>
+      <span>SCENT WITHOUT LIMITS <i>✳</i></span>
+      <span>TIMELESS BY NATURE <i>✳</i></span>
+      <span>THE ARABIAN SIGNATURE <i>✳</i></span>
+      <span>THE ART OF OUD <i>✳</i></span>
+      <span>SCENT WITHOUT LIMITS <i>✳</i></span>
+      <span>TIMELESS BY NATURE <i>✳</i></span>
+      <span>THE ARABIAN SIGNATURE <i>✳</i></span>
+    </div>
+  </div>
+
+  <!-- COLLECTION -->
+  <section class="section" id="collection">
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow" data-i18n="collectionEyebrow">
+            THE SIGNATURE COLLECTION
+          </div>
+          <h2 data-i18n="collectionTitle">
+            Scents that<br><span class="gold">speak for you.</span>
+          </h2>
+        </div>
+
+        <div>
+          <p data-i18n="collectionDescription">
+            Three expressions of individuality. Each fragrance,
+            an invitation to be remembered.
+          </p>
+          <a href="shop.html" class="text-link" style="margin-top:20px">
+            <span data-i18n="viewAll">View All Fragrances</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="products">
+
+        <article class="product-card reveal">
+          <a href="shop.html" class="product-visual" aria-label="Discover Oud Royale">
+            <span class="product-number">NO. 001</span>
+            <span class="product-tag" data-i18n="bestSeller">BESTSELLER</span>
+            <div class="mini-bottle"></div>
+          </a>
+
+          <div class="product-info">
+            <div class="product-category" data-i18n="categoryOud">WOODY · AMBER</div>
+            <h3 class="product-title">
+              <span data-i18n="oudName">Oud Royale</span>
+              <span class="product-ar" lang="ar">عود رويال</span>
+            </h3>
+            <div class="product-bottom">
+              <span class="price">SAR 320</span>
+              <button class="add-btn" data-product="oud"
+                aria-label="Add Oud Royale to cart">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal">
+          <a href="shop.html" class="product-visual" aria-label="Discover Midnight Musk">
+            <span class="product-number">NO. 002</span>
+            <span class="product-tag" data-i18n="newArrival">NEW ARRIVAL</span>
+            <div class="mini-bottle"></div>
+          </a>
+
+          <div class="product-info">
+            <div class="product-category" data-i18n="categoryMusk">MUSK · SPICE</div>
+            <h3 class="product-title">
+              <span data-i18n="muskName">Midnight Musk</span>
+              <span class="product-ar" lang="ar">مسك الليل</span>
+            </h3>
+            <div class="product-bottom">
+              <span class="price">SAR 280</span>
+              <button class="add-btn" data-product="musk"
+                aria-label="Add Midnight Musk to cart">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal">
+          <a href="shop.html" class="product-visual" aria-label="Discover Royal Amber">
+            <span class="product-number">NO. 003</span>
+            <span class="product-tag" data-i18n="exclusive">EXCLUSIVE</span>
+            <div class="mini-bottle"></div>
+          </a>
+
+          <div class="product-info">
+            <div class="product-category" data-i18n="categoryAmber">AMBER · SPICE</div>
+            <h3 class="product-title">
+              <span data-i18n="amberName">Royal Amber</span>
+              <span class="product-ar" lang="ar">العنبر الملكي</span>
+            </h3>
+            <div class="product-bottom">
+              <span class="price">SAR 350</span>
+              <button class="add-btn" data-product="amber"
+                aria-label="Add Royal Amber to cart">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORY -->
+  <section class="story" id="story">
+    <div class="container story-grid">
+
+      <div class="story-art reveal" aria-hidden="true">
+        <div class="story-ring"></div>
+        <div class="story-monogram">Z.</div>
+      </div>
+
+      <div class="story-copy reveal">
+        <div class="eyebrow" data-i18n="storyEyebrow">OUR PHILOSOPHY</div>
+
+        <h2 data-i18n="storyTitle">
+          Not merely worn.<br>
+          <span class="gold">Remembered.</span>
+        </h2>
+
+        <p data-i18n="storyP1">
+          A fragrance is more than a finishing touch. It is a personal
+          signature, an invisible presence that lingers long after
+          the moment has passed.
+        </p>
+
+        <p data-i18n="storyP2">
+          Inspired by the richness of Arabian perfumery and the
+          restraint of contemporary design, ZAYRŪN brings together
+          depth, character and understated luxury.
+        </p>
+
+        <div class="story-stats">
+          <div class="stat">
+            <strong>01</strong>
+            <span data-i18n="stat1">Distinctive Identity</span>
+          </div>
+          <div class="stat">
+            <strong>∞</strong>
+            <span data-i18n="stat2">Lasting Impressions</span>
+          </div>
+          <div class="stat">
+            <strong>AR</strong>
+            <span data-i18n="stat3">Inspired by Heritage</span>
+          </div>
+        </div>
+
+        <a href="about.html" class="btn btn-outline">
+          <span data-i18n="ourStoryBtn">Explore Our Story</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FRAGRANCE NOTES -->
+  <section class="section">
+    <div class="container notes">
+
+      <div class="eyebrow reveal" data-i18n="notesEyebrow">
+        THE LANGUAGE OF PERFUMERY
+      </div>
+
+      <h2 class="reveal" data-i18n="notesTitle">
+        Every fragrance tells<br>
+        <span class="gold">a different story.</span>
+      </h2>
+
+      <div class="note-grid reveal">
+        <article class="note">
+          <div class="note-symbol" aria-hidden="true">✳</div>
+          <h3 data-i18n="note1Title">Rare Oud</h3>
+          <p data-i18n="note1Description">
+            Deep, woody character with a distinctly Arabian soul.
+          </p>
+        </article>
+
+        <article class="note">
+          <div class="note-symbol" aria-hidden="true">◈</div>
+          <h3 data-i18n="note2Title">Warm Amber</h3>
+          <p data-i18n="note2Description">
+            Golden warmth, subtle sweetness and captivating depth.
+          </p>
+        </article>
+
+        <article class="note">
+          <div class="note-symbol" aria-hidden="true">✧</div>
+          <h3 data-i18n="note3Title">Velvet Musk</h3>
+          <p data-i18n="note3Description">
+            Soft, intimate sophistication with a lingering finish.
+          </p>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container reveal">
+      <div class="eyebrow" data-i18n="newsletterEyebrow">
+        A PRIVATE INVITATION
+      </div>
+
+      <h2 data-i18n="newsletterTitle">
+        Enter the world<br>
+        <span class="gold">of ZAYRŪN.</span>
+      </h2>
+
+      <p data-i18n="newsletterDescription">
+        Discover new collections, fragrance stories and exclusive releases.
+      </p>
+
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" required
+          autocomplete="email" placeholder="Your email address"
+          data-i18n-placeholder="emailPlaceholder"
+          aria-label="Email address">
+
+        <button type="submit" data-i18n="subscribe">JOIN US ↗</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer-top">
+
+      <div>
+        <a class="brand footer-brand" href="index.html">
+          <span class="brand-name">ZAYRŪN</span>
+          <span class="brand-sub" data-i18n="brandSub">THE ART OF FRAGRANCE</span>
+        </a>
+        <p class="footer-description" data-i18n="footerDescription">
+          A considered world of fragrance, where Arabian tradition
+          meets contemporary elegance.
+        </p>
+      </div>
+
+      <div>
+        <h4 data-i18n="footerExplore">EXPLORE</h4>
+        <div class="footer-links">
+          <a href="shop.html" data-i18n="navShop">Collection</a>
+          <a href="about.html" data-i18n="navAbout">Our Story</a>
+          <a href="contact.html" data-i18n="navContact">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 data-i18n="footerHelp">CLIENT CARE</h4>
+        <div class="footer-links">
+          <a href="contact.html" data-i18n="footerContact">Contact Us</a>
+          <a href="cart.html" data-i18n="footerCart">Your Cart</a>
+          <a href="checkout.html" data-i18n="footerCheckout">Checkout</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 data-i18n="footerFollow">FOLLOW THE HOUSE</h4>
+        <div class="footer-links">
+          <a href="#" data-social="instagram">Instagram ↗</a>
+          <a href="#" data-social="tiktok">TikTok ↗</a>
+          <a href="#" data-social="snapchat">Snapchat ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> ZAYRŪN. <span data-i18n="copyright">ALL RIGHTS RESERVED.</span></span>
+      <span data-i18n="footerMotto">CRAFTED WITH INTENTION. WORN WITH DISTINCTION.</span>
+    </div>
+
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ========================================
+   ZAYRŪN — INTERACTIONS
+======================================== */
+
+const translations = {
+  en: {
+    announcement: "COMPLIMENTARY DELIVERY ON ORDERS OVER SAR 350",
+    brandSub: "THE ART OF FRAGRANCE",
+    navHome: "Home",
+    navShop: "Collection",
+    navAbout: "Our Story",
+    navContact: "Contact",
+    heroEyebrow: "A SIGNATURE OF DISTINCTION",
+    heroLine1: "Beyond",
+    heroLine2: "the Senses.",
+    heroDescription: "Fragrances crafted for those who leave an impression without saying a word. Discover the meeting of rare ingredients, Arabian heritage and modern elegance.",
+    explore: "Explore Collection",
+    discoverStory: "Discover Our Story",
+    heroCaption: "AN OBJECT OF DESIRE · Nº 001",
+    heroIndex: "EST. IN ELEGANCE — 001 / 006",
+    collectionEyebrow: "THE SIGNATURE COLLECTION",
+    collectionTitle: 'Scents that<br><span class="gold">speak for you.</span>',
+    collectionDescription: "Three expressions of individuality. Each fragrance, an invitation to be remembered.",
+    viewAll: "View All Fragrances",
+    bestSeller: "BESTSELLER",
+    newArrival: "NEW ARRIVAL",
+    exclusive: "EXCLUSIVE",
+    categoryOud: "WOODY · AMBER",
+    categoryMusk: "MUSK · SPICE",
+    categoryAmber: "AMBER · SPICE",
+    oudName: "Oud Royale",
+    muskName: "Midnight Musk",
+    amberName: "Royal Amber",
+    storyEyebrow: "OUR PHILOSOPHY",
+    storyTitle: 'Not merely worn.<br><span class="gold">Remembered.</span>',
+    storyP1: "A fragrance is more than a finishing touch. It is a personal signature, an invisible presence that lingers long after the moment has passed.",
+    storyP2: "Inspired by the richness of Arabian perfumery and the restraint of contemporary design, ZAYRŪN brings together depth, character and understated luxury.",
+    stat1: "Distinctive Identity",
+    stat2: "Lasting Impressions",
+    stat3: "Inspired by Heritage",
+    ourStoryBtn: "Explore Our Story",
+    notesEyebrow: "THE LANGUAGE OF PERFUMERY",
+    notesTitle: 'Every fragrance tells<br><span class="gold">a different story.</span>',
+    note1Title: "Rare Oud",
+    note1Description: "Deep, woody character with a distinctly Arabian soul.",
+    note2Title: "Warm Amber",
+    note2Description: "Golden warmth, subtle sweetness and captivating depth.",
+    note3Title: "Velvet Musk",
+    note3Description: "Soft, intimate sophistication with a lingering finish.",
+    newsletterEyebrow: "A PRIVATE INVITATION",
+    newsletterTitle: 'Enter the world<br><span class="gold">of ZAYRŪN.</span>',
+    newsletterDescription: "Discover new collections, fragrance stories and exclusive releases.",
+    emailPlaceholder: "Your email address",
+    subscribe: "JOIN US ↗",
+    footerDescription: "A considered world of fragrance, where Arabian tradition meets contemporary elegance.",
+    footerExplore: "EXPLORE",
+    footerHelp: "CLIENT CARE",
+    footerContact: "Contact Us",
+    footerCart: "Your Cart",
+    footerCheckout: "Checkout",
+    footerFollow: "FOLLOW THE HOUSE",
+    copyright: "ALL RIGHTS RESERVED.",
+    footerMotto: "CRAFTED WITH INTENTION. WORN WITH DISTINCTION.",
+    added: "Added to your cart.",
+    newsletterSuccess: "Thank you for your interest!",
+    newsletterError: "Please enter a valid email address.",
+    socialPlaceholder: "Add your official social media link first.",
+    themeLight: "Switch to light mode",
+    themeDark: "Switch to dark mode",
+    menuOpen: "Open navigation",
+    menuClose: "Close navigation"
+  },
+
+  ar: {
+    announcement: "توصيل مجاني للطلبات التي تتجاوز ٣٥٠ ريال",
+    brandSub: "فن العطور",
+    navHome: "الرئيسية",
+    navShop: "المجموعة",
+    navAbout: "قصتنا",
+    navContact: "تواصل معنا",
+    heroEyebrow: "عنوانٌ للتميّز",
+    heroLine1: "أبعد من",
+    heroLine2: "الحواس.",
+    heroDescription: "عطور صُمّمت لمن يتركون أثراً دون الحاجة إلى الكلام. اكتشفوا تناغم المكوّنات النادرة مع عراقة التراث العربي وأناقة العصر الحديث.",
+    explore: "اكتشف المجموعة",
+    discoverStory: "اكتشف قصتنا",
+    heroCaption: "تحفة تستحق الاقتناء · ٠٠١",
+    heroIndex: "أناقة خالدة — ٠٠١ / ٠٠٦",
+    collectionEyebrow: "مجموعة العطور المميّزة",
+    collectionTitle: 'عطورٌ <br><span class="gold">تحكي عنك.</span>',
+    collectionDescription: "ثلاثة تعابير عن التفرّد، كل عطر منها دعوة إلى أن تبقى في الذاكرة.",
+    viewAll: "اكتشف جميع العطور",
+    bestSeller: "الأكثر مبيعاً",
+    newArrival: "وصل حديثاً",
+    exclusive: "إصدار حصري",
+    categoryOud: "خشبي · عنبري",
+    categoryMusk: "مسك · توابل",
+    categoryAmber: "عنبر · توابل",
+    oudName: "عود رويال",
+    muskName: "مسك الليل",
+    amberName: "العنبر الملكي",
+    storyEyebrow: "فلسفتنا",
+    storyTitle: 'ليس مجرّد عطر.<br><span class="gold">بل ذكرى.</span>',
+    storyP1: "العطر أكثر من مجرد لمسة أخيرة لإطلالتك؛ إنه توقيعك الخاص، وحضور خفيّ يبقى طويلاً بعد انقضاء اللحظة.",
+    storyP2: "يستوحي ZAYRŪN غناه من فن العطور العربية، ويجمع بين عمق المكوّنات وأناقة التصميم المعاصر والفخامة الهادئة.",
+    stat1: "هوية متفرّدة",
+    stat2: "أثر يدوم",
+    stat3: "إلهام من التراث",
+    ourStoryBtn: "اكتشف قصتنا",
+    notesEyebrow: "لغة صناعة العطور",
+    notesTitle: 'لكل عطر حكاية<br><span class="gold">مختلفة.</span>',
+    note1Title: "العود النادر",
+    note1Description: "طابع خشبي عميق بروح عربية أصيلة.",
+    note2Title: "العنبر الدافئ",
+    note2Description: "دفء ذهبي وحلاوة رقيقة وعمق آسر.",
+    note3Title: "المسك المخملي",
+    note3Description: "أناقة ناعمة وقريبة بأثر يدوم.",
+    newsletterEyebrow: "دعوة خاصة",
+    newsletterTitle: 'ادخل عالم<br><span class="gold">ZAYRŪN.</span>',
+    newsletterDescription: "اكتشف المجموعات الجديدة وحكايات العطور والإصدارات الحصرية.",
+    emailPlaceholder: "بريدك الإلكتروني",
+    subscribe: "انضم إلينا ↗",
+    footerDescription: "عالم من العطور يلتقي فيه التراث العربي بالأناقة المعاصرة.",
+    footerExplore: "اكتشف",
+    footerHelp: "خدمة العملاء",
+    footerContact: "تواصل معنا",
+    footerCart: "سلة التسوق",
+    footerCheckout: "إتمام الشراء",
+    footerFollow: "تابع الدار",
+    copyright: "جميع الحقوق محفوظة.",
+    footerMotto: "صناعة بإتقان. وأناقة باختلاف.",
+    added: "أُضيف العطر إلى سلة التسوق.",
+    newsletterSuccess: "شكراً لاهتمامك!",
+    newsletterError: "يرجى إدخال بريد إلكتروني صحيح.",
+    socialPlaceholder: "أضف رابط حسابك الرسمي أولاً.",
+    themeLight: "التبديل إلى الوضع الفاتح",
+    themeDark: "التبديل إلى الوضع الداكن",
+    menuOpen: "فتح القائمة",
+    menuClose: "إغلاق القائمة"
+  }
+};
+
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+let language = "en";
+let toastTimer;
+
+const themeToggle = $("#themeToggle");
+const themeIcon = $("#themeIcon");
+const languageToggle = $("#languageToggle");
+const menuToggle = $("#menuToggle");
+const navLinks = $("#navLinks");
+const menuIcon = $("#menuIcon");
+const toast = $("#toast");
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2600);
+}
+
+/* THEME */
+
+function setTheme(theme) {
+  const isLight = theme === "light";
+
+  document.body.classList.toggle("light", isLight);
+  themeIcon.textContent = isLight ? "☾" : "☼";
+  themeToggle.setAttribute(
+    "aria-label",
+    translations[language][isLight ? "themeDark" : "themeLight"]
+  );
+
+  const themeMeta = $('meta[name="theme-color"]');
+  if (themeMeta) {
+    themeMeta.content = isLight ? "#f5f1e9" : "#10100f";
+  }
+
+  try {
+    localStorage.setItem("ZAYRŪN-theme", theme);
+  } catch (_) {}
+}
+
+themeToggle.addEventListener("click", () => {
+  setTheme(document.body.classList.contains("light") ? "dark" : "light");
+});
+
+/* LANGUAGE */
+
+function setLanguage(nextLanguage) {
+  language = nextLanguage;
+  const isArabic = language === "ar";
+  const dictionary = translations[language];
+
+  document.documentElement.lang = language;
+  document.documentElement.dir = isArabic ? "rtl" : "ltr";
+
+  $$("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n;
+    if (dictionary[key] !== undefined) {
+      element.innerHTML = dictionary[key];
+    }
+  });
+
+  $$("[data-i18n-placeholder]").forEach(element => {
+    const key = element.dataset.i18nPlaceholder;
+    if (dictionary[key] !== undefined) {
+      element.placeholder = dictionary[key];
+    }
+  });
+
+  languageToggle.textContent = isArabic ? "EN" : "عربي";
+  languageToggle.setAttribute(
+    "aria-label",
+    isArabic ? "Switch to English" : "التبديل إلى العربية"
+  );
+
+  themeToggle.setAttribute(
+    "aria-label",
+    translations[language][
+      document.body.classList.contains("light") ? "themeDark" : "themeLight"
+    ]
+  );
+
+  menuToggle.setAttribute(
+    "aria-label",
+    dictionary[navLinks.classList.contains("open") ? "menuClose" : "menuOpen"]
+  );
+
+  try {
+    localStorage.setItem("ZAYRŪN-language", language);
+  } catch (_) {}
+}
+
+languageToggle.addEventListener("click", () => {
+  setLanguage(language === "en" ? "ar" : "en");
+});
+
+/* MOBILE MENU */
+
+function closeMenu() {
+  navLinks.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuIcon.textContent = "☰";
+  menuToggle.setAttribute("aria-label", translations[language].menuOpen);
+}
+
+menuToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuIcon.textContent = isOpen ? "×" : "☰";
+  menuToggle.setAttribute(
+    "aria-label",
+    translations[language][isOpen ? "menuClose" : "menuOpen"]
+  );
+});
+
+$$("#navLinks a").forEach(link => {
+  link.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeMenu();
+});
+
+document.addEventListener("click", event => {
+  if (!navLinks.contains(event.target) &&
+      !menuToggle.contains(event.target)) {
+    closeMenu();
+  }
+});
+
+/* SCROLL REVEAL */
+
+const revealElements = $$(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries, instance) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        instance.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealElements.forEach(element => observer.observe(element));
+} else {
+  revealElements.forEach(element => element.classList.add("visible"));
+}
+
+/* CART — DEMO FRONTEND
+   Shared between pages on the same origin.
+   Checkout/payment is not implemented here.
+*/
+
+const products = {
+  oud: {
+    id: "oud",
+    name: "Oud Royale",
+    nameAr: "عود رويال",
+    price: 320
+  },
+  musk: {
+    id: "musk",
+    name: "Midnight Musk",
+    nameAr: "مسك الليل",
+    price: 280
+  },
+  amber: {
+    id: "amber",
+    name: "Royal Amber",
+    nameAr: "العنبر الملكي",
+    price: 350
+  }
+};
+
+function getCart() {
+  try {
+    const cart = JSON.parse(localStorage.getItem("ZAYRŪN-cart") || "[]");
+    return Array.isArray(cart) ? cart : [];
+  } catch (_) {
+    return [];
+  }
+}
+
+function saveCart(cart) {
+  try {
+    localStorage.setItem("ZAYRŪN-cart", JSON.stringify(cart));
+  } catch (_) {
+    showToast("Cart storage is unavailable in this browser.");
+  }
+}
+
+function updateCartCount() {
+  const count = getCart().reduce(
+    (total, item) => total + Math.max(0, Number(item.quantity) || 0), 0
+  );
+  $("#cartCount").textContent = count;
+}
+
+$$("[data-product]").forEach(button => {
+  button.addEventListener("click", () => {
+    const product = products[button.dataset.product];
+    if (!product) return;
+
+    const cart = getCart();
+    const existing = cart.find(item => item.id === product.id);
+
+    if (existing) {
+      existing.quantity = (Number(existing.quantity) || 0) + 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+
+    saveCart(cart);
+    updateCartCount();
+    showToast(translations[language].added);
+  });
+});
+
+/* NEWSLETTER — DEMONSTRATION ONLY */
+
+$("#newsletterForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const input = $("#newsletterEmail");
+
+  if (!input.checkValidity()) {
+    showToast(translations[language].newsletterError);
+    input.reportValidity();
+    return;
+  }
+
+  showToast(translations[language].newsletterSuccess);
+  input.value = "";
+
+  // Connect an email marketing service to actually collect subscriptions.
+});
+
+/* SOCIAL LINKS — ADD YOUR REAL URLS BEFORE LAUNCH */
+
+$$("[data-social]").forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    showToast(translations[language].socialPlaceholder);
+  });
+});
+
+/* YEAR & INITIAL PREFERENCES */
+
+$("#year").textContent = new Date().getFullYear();
+
+try {
+  const savedTheme = localStorage.getItem("ZAYRŪN-theme");
+  const savedLanguage = localStorage.getItem("ZAYRŪN-language");
+
+  setTheme(savedTheme === "light" ? "light" : "dark");
+  setLanguage(savedLanguage === "ar" ? "ar" : "en");
+} catch (_) {
+  setTheme("dark");
+  setLanguage("en");
+}
+
+updateCartCount();
+</script>
+
+</body>
+</html>

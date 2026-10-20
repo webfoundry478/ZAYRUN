@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10100f">
+<title>Our Story | ZAYRŪN — The Art of Scent</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#10100f;
+  --surface:#181816;
+  --surface2:#20201d;
+  --text:#f4efe6;
+  --muted:#a6a095;
+  --gold:#c8a96e;
+  --gold2:#ead5a6;
+  --line:rgba(200,169,110,.22);
+  --header:rgba(16,16,15,.82);
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"DM Sans",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-weight:300;
+  overflow-x:hidden;transition:background .35s,color .35s;
+}
+body.light{
+  --bg:#f4f0e8;--surface:#eae3d7;--surface2:#ded4c3;
+  --text:#24211c;--muted:#70695e;--gold:#96743e;
+  --gold2:#775b2e;--line:rgba(120,91,46,.25);
+  --header:rgba(244,240,232,.88);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
+::selection{background:var(--gold);color:#111}
+.container{width:min(1160px,88%);margin:auto}
+.gold{color:var(--gold)}
+.eyebrow{
+  color:var(--gold);font-size:10px;letter-spacing:4px;
+  text-transform:uppercase;display:flex;align-items:center;gap:13px;
+}
+.eyebrow:before{content:"";height:1px;width:30px;background:var(--gold)}
+h1,h2,h3{font-family:var(--serif);font-weight:400}
+h2{font-size:clamp(42px,5.5vw,72px);line-height:.98;letter-spacing:-1.5px}
+p{line-height:1.9;color:var(--muted);font-size:13px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:14px;
+  padding:15px 22px;border:1px solid var(--gold);
+  background:var(--gold);color:#17140f;
+  text-transform:uppercase;letter-spacing:1.6px;font-size:9px;
+  font-weight:600;transition:.3s;
+}
+.btn:hover{background:transparent;color:var(--text);transform:translateY(-3px)}
+.btn.outline{background:transparent;color:var(--text);border-color:var(--line)}
+.btn.outline:hover{border-color:var(--gold);color:var(--gold)}
+/* Navigation */
+header{
+  height:78px;position:fixed;inset:0 0 auto;z-index:50;
+  background:var(--header);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.logo{font-family:var(--serif);font-size:30px;letter-spacing:7px;font-weight:600}
+.logo span{color:var(--gold)}
+.navlinks{display:flex;gap:30px;align-items:center}
+.navlinks a{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);transition:.25s}
+.navlinks a:hover,.navlinks a.active{color:var(--gold)}
+.actions{display:flex;align-items:center;gap:16px}
+.iconbtn{background:none;border:0;color:var(--text);font-size:11px;letter-spacing:1px}
+.cartlink{font-size:10px;letter-spacing:1px}
+#cartCount{color:var(--gold)}
+.menuBtn{display:none;background:none;border:0;font-size:22px}
+/* Hero */
+.hero{
+  min-height:660px;padding:155px 0 95px;position:relative;
+  overflow:hidden;display:flex;align-items:center;
+}
+.hero:before{
+  content:"";position:absolute;width:650px;height:650px;border-radius:50%;
+  border:1px solid var(--line);right:-90px;top:40px;
+  box-shadow:0 0 0 60px rgba(200,169,110,.025),0 0 0 120px rgba(200,169,110,.018);
+}
+.hero:after{
+  content:"N";position:absolute;right:10%;top:80px;
+  font-family:var(--serif);font-size:clamp(350px,52vw,690px);
+  line-height:1;color:var(--gold);opacity:.035;pointer-events:none;
+}
+.heroGrid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:55px;position:relative;z-index:1}
+.heroCopy{animation:rise 1s both}
+.hero h1{font-size:clamp(70px,10vw,128px);line-height:.78;letter-spacing:-4px;margin:30px 0}
+.hero h1 em{font-weight:400;color:var(--gold)}
+.heroCopy p{max-width:430px;margin:28px 0 30px}
+.heroMeta{display:flex;align-items:center;gap:18px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:35px}
+.heroMeta span{width:32px;height:1px;background:var(--gold)}
+/* CSS-only fragrance still life */
+.stillLife{height:450px;position:relative;display:grid;place-items:center;animation:rise 1.1s .15s both}
+.halo{position:absolute;width:320px;height:320px;border-radius:50%;border:1px solid var(--line);box-shadow:0 0 80px rgba(200,169,110,.07),inset 0 0 70px rgba(200,169,110,.035)}
+.halo:before,.halo:after{content:"";position:absolute;border:1px solid var(--line);border-radius:50%;inset:23px}
+.halo:after{inset:48px}
+.podium{position:absolute;bottom:35px;width:330px;height:85px;border-radius:50%;background:linear-gradient(180deg,#3a3020,#171512 75%);border:1px solid rgba(200,169,110,.3);box-shadow:0 25px 60px #0008}
+.bottle{
+  width:150px;height:225px;position:relative;z-index:2;
+  border:1px solid #c8a96e99;border-radius:22px 22px 32px 32px;
+  background:linear-gradient(100deg,#29251d,#b19a6b 17%,#242019 34%,#3c3020 75%,#171512);
+  box-shadow:inset 5px 0 12px #fff2,inset -8px 0 20px #0009,0 30px 55px #0008;
+  transform:rotate(-5deg);animation:float 5s ease-in-out infinite;
+}
+.bottle:before{content:"";position:absolute;top:-33px;left:49px;width:50px;height:34px;border:1px solid #bba36d;background:linear-gradient(90deg,#4d412b,#c7b17b,#4c402b);border-radius:5px 5px 2px 2px}
+.bottle:after{content:"";position:absolute;top:-44px;left:58px;width:32px;height:12px;background:linear-gradient(90deg,#5b4a2e,#d3ba7f,#5b4a2e);border-radius:3px}
+.bottleLabel{position:absolute;left:12px;right:12px;top:77px;height:87px;border:1px solid #c8a96e88;display:grid;place-content:center;text-align:center;background:#171512a8}
+.bottleLabel strong{font-family:var(--serif);font-size:23px;letter-spacing:3px;font-weight:500}
+.bottleLabel small{font-size:6px;letter-spacing:2px;color:#c8a96e;margin-top:7px}
+.floatNote{position:absolute;font-family:var(--serif);font-size:19px;color:var(--gold);font-style:italic}
+.noteOne{right:5px;top:100px}.noteTwo{left:0;bottom:110px}
+/* Intro */
+.intro{padding:120px 0;border-top:1px solid var(--line)}
+.introGrid{display:grid;grid-template-columns:.7fr 1.3fr;gap:100px}
+.introSide{padding-top:12px}
+.sideNumber{font-family:var(--serif);font-size:100px;color:var(--gold);line-height:1}
+.sideLabel{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.introMain h2{max-width:750px;margin-bottom:30px}
+.introMain h2 em{color:var(--gold)}
+.introMain p{max-width:680px;font-size:14px}
+.introMain p+p{margin-top:17px}
+.signature{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--gold);margin-top:28px}
+/* Philosophy */
+.philosophy{padding:105px 0;background:var(--surface);position:relative;overflow:hidden}
+.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:55px}
+.sectionHead p{max-width:330px}
+.values{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.value{padding:36px 32px 30px 0;border-bottom:1px solid var(--line);transition:transform .3s}
+.value+.value{padding-left:32px;border-left:1px solid var(--line)}
+.valueNum{font-family:var(--serif);font-size:20px;color:var(--gold)}
+.valueMark{width:46px;height:46px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin:28px 0;font-size:19px;color:var(--gold)}
+.value h3{font-size:31px;margin-bottom:12px}
+.value p{max-width:280px}
+.value:hover{transform:translateY(-5px)}
+/* Craft */
+.craft{padding:120px 0}
+.craftGrid{display:grid;grid-template-columns:1fr 1fr;gap:95px;align-items:center}
+.craftArt{
+  min-height:490px;position:relative;display:grid;place-items:center;
+  background:radial-gradient(ellipse at center,#4a3921 0%,#242019 32%,var(--bg) 72%);
+  border:1px solid var(--line);overflow:hidden;
+}
+body.light .craftArt{background:radial-gradient(ellipse at center,#d8c29a 0%,#e5d9c2 35%,var(--surface) 75%)}
+.craftArt:before,.craftArt:after{content:"";position:absolute;border:1px solid var(--line);border-radius:50%;width:330px;height:330px}
+.craftArt:after{width:250px;height:250px}
+.craftBottle{width:118px;height:205px;border:1px solid var(--gold);border-radius:16px 16px 27px 27px;background:linear-gradient(90deg,#201a12,#9d8250 20%,#2e2519 48%,#17130e);box-shadow:0 35px 55px #0008;z-index:2;position:relative}
+.craftBottle:before{content:"";position:absolute;top:-27px;left:37px;width:44px;height:28px;background:linear-gradient(90deg,#65502e,#d2b87c,#65502e);border:1px solid var(--gold)}
+.craftBottle:after{content:"ZAYRŪN";position:absolute;top:80px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:20px;letter-spacing:3px;color:#ead5a6}
+.craftText h2{margin:25px 0}
+.craftText p{font-size:14px}
+.craftText .btn{margin-top:30px}
+.steps{margin-top:35px}
+.step{display:grid;grid-template-columns:45px 1fr;gap:17px;padding:19px 0;border-top:1px solid var(--line)}
+.stepNo{font-family:var(--serif);font-size:25px;color:var(--gold)}
+.step h3{font-size:24px;margin-bottom:3px}
+.step p{font-size:12px}
+/* Quote */
+.quote{padding:100px 0;text-align:center;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quoteMark{font-family:var(--serif);font-size:85px;line-height:.8;color:var(--gold);opacity:.7}
+.quote blockquote{font-family:var(--serif);font-size:clamp(36px,5.3vw,66px);line-height:1.1;max-width:900px;margin:25px auto 28px}
+.quote blockquote em{color:var(--gold)}
+.quote small{font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
+/* CTA */
+.cta{padding:110px 0;text-align:center;position:relative;overflow:hidden}
+.cta:before{content:"";position:absolute;width:500px;height:500px;border:1px solid var(--line);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
+.ctaInner{position:relative}
+.cta h2{margin:25px auto;max-width:800px}
+.cta p{max-width:440px;margin:0 auto 28px}
+/* Footer */
+footer{border-top:1px solid var(--line);padding:48px 0 22px}
+.footerTop{display:flex;justify-content:space-between;align-items:start;gap:35px;padding-bottom:38px}
+.footerBrand p{max-width:280px;margin-top:15px;font-size:11px}
+.footerLinks{display:flex;gap:55px}
+.footerCol h4{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:500}
+.footerCol a{display:block;font-size:11px;color:var(--muted);margin:12px 0;transition:.2s}
+.footerCol a:hover{color:var(--gold)}
+.footerBottom{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:9px;letter-spacing:1px;color:var(--muted)}
+/* Motion */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-12px) rotate(-3deg)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+/* Arabic */
+html[dir="rtl"] body{font-family:"Noto Sans Arabic",var(--sans)}
+html[dir="rtl"] .eyebrow{letter-spacing:0}
+html[dir="rtl"] .eyebrow:before{display:none}
+html[dir="rtl"] .eyebrow:after{content:"";height:1px;width:30px;background:var(--gold)}
+html[dir="rtl"] .hero h1{letter-spacing:0;line-height:1.12}
+html[dir="rtl"] .navlinks a,html[dir="rtl"] .btn{letter-spacing:0}
+html[dir="rtl"] .value+.value{padding-left:0;padding-right:32px;border-left:0;border-right:1px solid var(--line)}
+html[dir="rtl"] .value{padding-right:0}
+html[dir="rtl"] .introMain h2,html[dir="rtl"] .craftText h2{letter-spacing:0}
+html[dir="rtl"] .footerCol h4{letter-spacing:0}
+html[dir="rtl"] .footerBottom{letter-spacing:0}
+@media(max-width:900px){
+ .navlinks{gap:15px}.navlinks a{font-size:9px}
+ .heroGrid{gap:20px}.stillLife{transform:scale(.9)}
+ .introGrid,.craftGrid{gap:45px}
+}
+@media(max-width:700px){
+ header{height:68px}.logo{font-size:25px}
+ .menuBtn{display:block}
+ .navlinks{
+   display:none;position:absolute;top:68px;left:0;right:0;
+   padding:25px 6%;background:var(--bg);border-bottom:1px solid var(--line);
+   flex-direction:column;align-items:stretch;gap:0;
+ }
+ .navlinks.open{display:flex}
+ .navlinks a{padding:14px 0;border-bottom:1px solid var(--line);font-size:11px}
+ .actions{gap:11px}.cartlink{font-size:9px}
+ .hero{padding:125px 0 65px;min-height:0}
+ .heroGrid{grid-template-columns:1fr;gap:0}
+ .hero h1{font-size:clamp(75px,18vw,112px)}
+ .heroCopy p{max-width:520px}
+ .stillLife{height:370px;transform:none;margin-top:5px}
+ .halo{width:270px;height:270px}.podium{width:290px}
+ .intro,.craft{padding:75px 0}
+ .introGrid,.craftGrid{grid-template-columns:1fr;gap:35px}
+ .sideNumber{font-size:70px}
+ .sectionHead{align-items:start;flex-direction:column;margin-bottom:35px}
+ .values{grid-template-columns:1fr}
+ .value,.value+.value{padding:27px 0;border-left:0;border-right:0}
+ .valueMark{margin:18px 0}
+ .craftArt{min-height:360px;order:2}
+ .craftText{order:1}
+ .quote{padding:75px 0}
+ .cta{padding:80px 0}
+ .footerTop{flex-direction:column}
+ .footerLinks{gap:45px;flex-wrap:wrap}
+ .footerBottom{flex-direction:column}
+ html[dir="rtl"] .value+.value{padding-right:0;border-right:0}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html" aria-label="ZAYRŪN home">ZAYR<span>ŪN</span></a>
+
+    <nav class="navlinks" id="navlinks">
+      <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+      <a href="shop.html" data-en="Collection" data-ar="المجموعة">Collection</a>
+      <a href="about.html" class="active" data-en="Our Story" data-ar="قصتنا">Our Story</a>
+      <a href="contact.html" data-en="Contact" data-ar="تواصل معنا">Contact</a>
+    </nav>
+
+    <div class="actions">
+      <button class="iconbtn" id="langBtn" type="button">عربي</button>
+      <button class="iconbtn" id="themeBtn" type="button" aria-label="Toggle light and dark theme">☼</button>
+      <a class="cartlink" href="cart.html"><span data-en="BAG" data-ar="الحقيبة">BAG</span> (<span id="cartCount">0</span>)</a>
+      <button class="menuBtn" id="menuBtn" type="button" aria-label="Open navigation">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container heroGrid">
+      <div class="heroCopy">
+        <div class="eyebrow" data-en="The house of fragrance" data-ar="دار العطور">The house of fragrance</div>
+        <h1 data-en="More than<br><em>a scent.</em>" data-ar="أكثر من<br><em>مجرد عطر.</em>">More than<br><em>a scent.</em></h1>
+        <p data-en="We believe a fragrance should do more than be noticed. It should be remembered — long after the moment has passed." data-ar="نؤمن أن العطر ليس مجرد رائحة تلفت الانتباه، بل ذكرى تبقى معك حتى بعد أن تمضي اللحظة.">We believe a fragrance should do more than be noticed. It should be remembered — long after the moment has passed.</p>
+        <a class="btn" href="shop.html"><span data-en="Discover our collection" data-ar="اكتشف مجموعتنا">Discover our collection</span> <span>↗</span></a>
+        <div class="heroMeta"><span></span><div data-en="Crafted to leave a trace" data-ar="صُممت لتترك أثراً">Crafted to leave a trace</div></div>
+      </div>
+
+      <div class="stillLife" aria-label="Abstract luxury perfume bottle illustration">
+        <div class="halo"></div>
+        <div class="floatNote noteOne" data-en="The art of presence" data-ar="فن الحضور">The art of presence</div>
+        <div class="floatNote noteTwo" data-en="Est. in imagination" data-ar="حكاية من الخيال">Est. in imagination</div>
+        <div class="podium"></div>
+        <div class="bottle">
+          <div class="bottleLabel">
+            <strong>ZAYRŪN</strong>
+            <small>EAU DE PARFUM</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="container introGrid">
+      <div class="introSide reveal">
+        <div class="sideNumber">01</div>
+        <div class="sideLabel" data-en="Our perspective" data-ar="رؤيتنا">Our perspective</div>
+      </div>
+      <div class="introMain reveal">
+        <div class="eyebrow" data-en="A different kind of luxury" data-ar="مفهوم مختلف للفخامة">A different kind of luxury</div>
+        <h2 data-en="Quiet confidence.<br><em>Lasting presence.</em>" data-ar="ثقة هادئة.<br><em>حضور لا يُنسى.</em>">Quiet confidence.<br><em>Lasting presence.</em></h2>
+        <p data-en="ZAYRŪN was imagined around a simple idea: true luxury never needs to shout. It lives in the details, in the quality you feel, and in the memories a fragrance brings back." data-ar="انطلقت فكرة ZAYRŪN من مبدأ بسيط: الفخامة الحقيقية لا تحتاج إلى ضجيج. إنها تكمن في التفاصيل، وفي الجودة التي تشعر بها، وفي الذكريات التي يعيدها العطر إليك.">ZAYRŪN was imagined around a simple idea: true luxury never needs to shout. It lives in the details, in the quality you feel, and in the memories a fragrance brings back.</p>
+        <p data-en="Our world is inspired by contrasts — shadow and light, warm woods and smooth musk, timeless tradition and modern restraint. Every element belongs to the same story." data-ar="يستمد عالمنا إلهامه من التناقضات: الظل والنور، والأخشاب الدافئة والمسك الناعم، والأصالة الخالدة والبساطة العصرية. كل تفصيل يروي جزءاً من الحكاية نفسها.">Our world is inspired by contrasts — shadow and light, warm woods and smooth musk, timeless tradition and modern restraint. Every element belongs to the same story.</p>
+        <div class="signature" data-en="The ZAYRŪN philosophy" data-ar="فلسفة ZAYRŪN">The ZAYRŪN philosophy</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="philosophy">
+    <div class="container">
+      <div class="sectionHead reveal">
+        <div>
+          <div class="eyebrow" data-en="What defines us" data-ar="ما يميزنا">What defines us</div>
+          <h2 style="margin-top:24px" data-en="Our philosophy." data-ar="فلسفتنا.">Our philosophy.</h2>
+        </div>
+        <p data-en="Three principles shape the ZAYRŪN experience, from the first impression to the final note." data-ar="ثلاثة مبادئ ترسم تجربة ZAYRŪN من الانطباع الأول وحتى آخر نفحة.">Three principles shape the ZAYRŪN experience, from the first impression to the final note.</p>
+      </div>
+
+      <div class="values">
+        <article class="value reveal">
+          <div class="valueNum">01 / 03</div>
+          <div class="valueMark">✳</div>
+          <h3 data-en="Character" data-ar="التميّز">Character</h3>
+          <p data-en="Distinctive fragrance identities for people who prefer to express themselves without saying a word." data-ar="هويات عطرية مميزة لمن يفضلون التعبير عن أنفسهم دون الحاجة إلى الكلام.">Distinctive fragrance identities for people who prefer to express themselves without saying a word.</p>
+        </article>
+        <article class="value reveal">
+          <div class="valueNum">02 / 03</div>
+          <div class="valueMark">◇</div>
+          <h3 data-en="Craft" data-ar="الإتقان">Craft</h3>
+          <p data-en="A considered approach to fragrance, presentation and every small detail that makes the experience feel special." data-ar="عناية مدروسة بالعطر وتقديمه، وبكل تفصيل صغير يجعل التجربة استثنائية.">A considered approach to fragrance, presentation and every small detail that makes the experience feel special.</p>
+        </article>
+        <article class="value reveal">
+          <div class="valueNum">03 / 03</div>
+          <div class="valueMark">∞</div>
+          <h3 data-en="Memory" data-ar="الذكرى">Memory</h3>
+          <p data-en="Because the best fragrances become part of your story — connected to places, people and moments." data-ar="لأن أجمل العطور تصبح جزءاً من حكايتك، وترتبط بالأماكن والأشخاص واللحظات.">Because the best fragrances become part of your story — connected to places, people and moments.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="craft">
+    <div class="container craftGrid">
+      <div class="craftArt reveal" aria-label="Abstract perfume bottle artwork">
+        <div class="craftBottle"></div>
+      </div>
+      <div class="craftText reveal">
+        <div class="eyebrow" data-en="The fragrance journey" data-ar="رحلة العطر">The fragrance journey</div>
+        <h2 data-en="Every note has<br><em>a purpose.</em>" data-ar="لكل نفحة<br><em>حكاية وهدف.</em>">Every note has<br><em>a purpose.</em></h2>
+        <p data-en="A fragrance unfolds gradually. The opening draws you in, the heart reveals its character, and the base leaves a lasting impression. We see each stage as part of one carefully considered experience." data-ar="يتكشف العطر تدريجياً؛ تجذبك النفحات الأولى، ثم يكشف القلب عن شخصيته، وتترك القاعدة أثراً يدوم. نرى كل مرحلة جزءاً من تجربة متكاملة ومدروسة.">A fragrance unfolds gradually. The opening draws you in, the heart reveals its character, and the base leaves a lasting impression. We see each stage as part of one carefully considered experience.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="stepNo">01</div>
+            <div>
+              <h3 data-en="The opening" data-ar="النفحات الأولى">The opening</h3>
+              <p data-en="The first impression — bright, fresh or beautifully mysterious." data-ar="الانطباع الأول؛ منعش أو مشرق أو غامض بجمال.">The first impression — bright, fresh or beautifully mysterious.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="stepNo">02</div>
+            <div>
+              <h3 data-en="The heart" data-ar="قلب العطر">The heart</h3>
+              <p data-en="The personality of the fragrance, revealed as it develops." data-ar="شخصية العطر التي تظهر مع تطوره على البشرة.">The personality of the fragrance, revealed as it develops.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="stepNo">03</div>
+            <div>
+              <h3 data-en="The lasting note" data-ar="الأثر الأخير">The lasting note</h3>
+              <p data-en="The deeper impression that stays with you." data-ar="الأثر العميق الذي يبقى معك.">The deeper impression that stays with you.</p>
+            </div>
+          </div>
+        </div>
+
+        <a class="btn" href="shop.html"><span data-en="Explore fragrances" data-ar="استكشف العطور">Explore fragrances</span> <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote">
+    <div class="container reveal">
+      <div class="quoteMark">“</div>
+      <blockquote data-en="A fragrance is invisible, yet it can become <em>the most unforgettable part of you.</em>" data-ar="العطر لا يُرى، ومع ذلك قد يصبح <em>أكثر ما يُذكر فيك.</em>">A fragrance is invisible, yet it can become <em>the most unforgettable part of you.</em></blockquote>
+      <small data-en="The ZAYRŪN point of view" data-ar="رؤية ZAYRŪN">The ZAYRŪN point of view</small>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container ctaInner reveal">
+      <div class="eyebrow" style="justify-content:center" data-en="Find your signature" data-ar="اكتشف عطرك الخاص">Find your signature</div>
+      <h2 data-en="Your story.<br><em>Your scent.</em>" data-ar="حكايتك.<br><em>عطرك.</em>">Your story.<br><em>Your scent.</em></h2>
+      <p data-en="Explore a considered collection of fragrance ideas and find the scent that feels like you." data-ar="اكتشف مجموعة مختارة من العطور، واعثر على الرائحة التي تعبّر عنك.">Explore a considered collection of fragrance ideas and find the scent that feels like you.</p>
+      <a class="btn" href="shop.html"><span data-en="Enter the collection" data-ar="اكتشف المجموعة">Enter the collection</span> <span>↗</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footerTop">
+      <div class="footerBrand">
+        <a class="logo" href="index.html">ZAYR<span>ŪN</span></a>
+        <p data-en="Fragrance with character. A world shaped by depth, elegance and the art of leaving a lasting impression." data-ar="عطور تحمل شخصية خاصة. عالم من العمق والأناقة وفن ترك الأثر.">Fragrance with character. A world shaped by depth, elegance and the art of leaving a lasting impression.</p>
+      </div>
+      <div class="footerLinks">
+        <div class="footerCol">
+          <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+          <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+          <a href="shop.html" data-en="Collection" data-ar="المجموعة">Collection</a>
+          <a href="about.html" data-en="Our Story" data-ar="قصتنا">Our Story</a>
+        </div>
+        <div class="footerCol">
+          <h4 data-en="Assistance" data-ar="المساعدة">Assistance</h4>
+          <a href="contact.html" data-en="Contact us" data-ar="تواصل معنا">Contact us</a>
+          <a href="cart.html" data-en="Shopping bag" data-ar="حقيبة التسوق">Shopping bag</a>
+          <a href="checkout.html" data-en="Checkout" data-ar="إتمام الطلب">Checkout</a>
+        </div>
+      </div>
+    </div>
+    <div class="footerBottom">
+      <span>© <span id="year"></span> ZAYRŪN. <span data-en="ALL RIGHTS RESERVED." data-ar="جميع الحقوق محفوظة.">ALL RIGHTS RESERVED.</span></span>
+      <span data-en="MADE FOR THE MOMENTS THAT MATTER." data-ar="للحظات التي تستحق أن تبقى.">MADE FOR THE MOMENTS THAT MATTER.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
+
+const translations = {
+  en: {
+    title: "Our Story | ZAYRŪN — The Art of Scent",
+    dir: "ltr",
+    langButton: "عربي"
+  },
+  ar: {
+    title: "قصتنا | ZAYRŪN — فن العطر",
+    dir: "rtl",
+    langButton: "EN"
+  }
+};
+
+let language = localStorage.getItem("ZAYRŪN-language") || "en";
+let theme = localStorage.getItem("ZAYRŪN-theme") || "dark";
+
+function applyLanguage() {
+  const t = translations[language];
+  document.documentElement.lang = language;
+  document.documentElement.dir = t.dir;
+  document.title = t.title;
+  $("#langBtn").textContent = t.langButton;
+
+  $$("[data-" + language + "]").forEach(el => {
+    el.innerHTML = el.getAttribute("data-" + language);
+  });
+}
+
+function applyTheme() {
+  document.body.classList.toggle("light", theme === "light");
+  $("#themeBtn").textContent = theme === "light" ? "☾" : "☼";
+  $("#themeBtn").setAttribute(
+    "aria-label",
+    theme === "light" ? "Switch to dark theme" : "Switch to light theme"
+  );
+}
+
+function updateCartCount() {
+  try {
+    const cart = JSON.parse(localStorage.getItem("ZAYRŪN-cart") || "[]");
+    $("#cartCount").textContent = cart.reduce(
+      (sum, item) => sum + (Number(item.quantity) || 0), 0
+    );
+  } catch {
+    $("#cartCount").textContent = "0";
+  }
+}
+
+$("#langBtn").addEventListener("click", () => {
+  language = language === "en" ? "ar" : "en";
+  localStorage.setItem("ZAYRŪN-language", language);
+  applyLanguage();
+});
+
+$("#themeBtn").addEventListener("click", () => {
+  theme = theme === "dark" ? "light" : "dark";
+  localStorage.setItem("ZAYRŪN-theme", theme);
+  applyTheme();
+});
+
+$("#menuBtn").addEventListener("click", () => {
+  const nav = $("#navlinks");
+  nav.classList.toggle("open");
+  $("#menuBtn").textContent = nav.classList.contains("open") ? "✕" : "☰";
+});
+
+$("#navlinks").querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    $("#navlinks").classList.remove("open");
+    $("#menuBtn").textContent = "☰";
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+$$(".reveal").forEach(el => observer.observe(el));
+
+$("#year").textContent = new Date().getFullYear();
+applyLanguage();
+applyTheme();
+updateCartCount();
+</script>
+</body>
+</html>

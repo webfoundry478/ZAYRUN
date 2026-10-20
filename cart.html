@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10100f">
+<title>Your Bag | ZAYRŪN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --bg:#10100f;--surface:#191917;--surface2:#23221f;
+ --text:#f4efe6;--muted:#a6a095;--gold:#c8a96e;--gold2:#ead5a6;
+ --line:rgba(200,169,110,.23);--header:rgba(16,16,15,.88);
+ --serif:"Cormorant Garamond",Georgia,serif;--sans:"DM Sans",Arial,sans-serif;
+}
+body.light{
+ --bg:#f4f0e8;--surface:#eae3d7;--surface2:#ded4c3;
+ --text:#24211c;--muted:#70695e;--gold:#96743e;--gold2:#775b2e;
+ --line:rgba(120,91,46,.25);--header:rgba(244,240,232,.9);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;transition:background .3s,color .3s;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+::selection{background:var(--gold);color:#111}
+.container{width:min(1160px,88%);margin:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:400}
+h1{font-size:clamp(58px,9vw,100px);line-height:.95;letter-spacing:-2px}
+h2{font-size:39px}
+p{font-size:13px;line-height:1.9;color:var(--muted)}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.eyebrow:before{content:"";height:1px;width:30px;background:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:16px 22px;background:var(--gold);border:1px solid var(--gold);color:#17140f;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:.3s}
+.btn:hover{background:transparent;color:var(--text);transform:translateY(-2px)}
+.btn.secondary{background:transparent;color:var(--text);border-color:var(--line)}
+.btn.secondary:hover{border-color:var(--gold);color:var(--gold)}
+header{height:78px;position:sticky;top:0;z-index:50;background:var(--header);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.logo{font-family:var(--serif);font-size:30px;letter-spacing:7px;font-weight:600}
+.logo span{color:var(--gold)}
+.navlinks{display:flex;align-items:center;gap:30px}
+.navlinks a{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);transition:.2s}
+.navlinks a:hover,.navlinks a.active{color:var(--gold)}
+.actions{display:flex;align-items:center;gap:16px}
+.iconbtn{background:none;border:0;color:var(--text);font-size:11px}
+.cartlink{font-size:10px;letter-spacing:1px}
+#cartCount{color:var(--gold)}
+.menuBtn{display:none;background:none;border:0;color:var(--text);font-size:22px}
+main{padding-bottom:90px}
+.pageHero{padding:75px 0 50px;position:relative;overflow:hidden}
+.pageHero:after{content:"01";position:absolute;right:4%;top:-60px;font-family:var(--serif);font-size:280px;color:var(--gold);opacity:.035;pointer-events:none}
+.pageHero .eyebrow{margin-bottom:25px}
+.pageHero h1 em{color:var(--gold);font-weight:400}
+.pageHero p{max-width:500px;margin-top:22px}
+.breadcrumb{display:flex;gap:12px;align-items:center;margin-top:30px;font-size:10px;color:var(--muted)}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb span{color:var(--gold)}
+.cartLayout{display:grid;grid-template-columns:1.55fr .75fr;gap:55px;align-items:start}
+.cartHeader{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--line);gap:15px}
+.cartHeader h2{font-size:35px}
+.cartHeader span{font-size:10px;color:var(--muted);letter-spacing:1px}
+#cartItems{min-height:100px}
+.cartItem{display:grid;grid-template-columns:112px 1fr auto;gap:24px;align-items:center;padding:25px 0;border-bottom:1px solid var(--line);animation:appear .4s both}
+.productVisual{height:125px;position:relative;display:grid;place-items:center;background:radial-gradient(ellipse at center,#4b3920,#201d17 65%,var(--surface) 100%);border:1px solid var(--line);overflow:hidden}
+body.light .productVisual{background:radial-gradient(ellipse at center,#d7c49e,#e6ddcb 65%,var(--surface) 100%)}
+.productVisual:before{content:"";position:absolute;width:95px;height:95px;border:1px solid var(--line);border-radius:50%}
+.miniBottle{position:relative;width:42px;height:70px;z-index:1;border:1px solid #c8a96e;border-radius:7px 7px 11px 11px;background:linear-gradient(90deg,#1c1914,#a88b50 22%,#332818 55%,#17140f);box-shadow:0 12px 20px #0005}
+.miniBottle:before{content:"";position:absolute;width:17px;height:12px;left:12px;top:-12px;background:linear-gradient(90deg,#68522d,#d5bb7d,#68522d);border:1px solid var(--gold)}
+.miniBottle:after{content:"N";position:absolute;left:0;right:0;top:25px;text-align:center;font-family:var(--serif);font-size:16px;color:#ead5a6}
+.itemName{font-family:var(--serif);font-size:29px;line-height:1.05;margin-bottom:7px}
+.itemArabic{font-size:12px;color:var(--gold);margin-bottom:9px}
+.itemMeta{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.itemPrice{font-size:13px;margin-top:13px}
+.quantityControl{display:flex;align-items:center;border:1px solid var(--line);width:max-content;margin-top:15px}
+.quantityControl button{width:31px;height:30px;border:0;background:transparent;color:var(--text);font-size:15px}
+.quantityControl button:hover{color:var(--gold)}
+.quantityControl span{width:28px;text-align:center;font-size:11px}
+.itemRight{display:flex;flex-direction:column;align-items:end;gap:27px}
+.linePrice{font-size:13px;white-space:nowrap}
+.removeBtn{border:0;background:none;color:var(--muted);font-size:9px;text-decoration:underline;text-underline-offset:4px}
+.removeBtn:hover{color:var(--gold)}
+.emptyState{text-align:center;padding:75px 20px;border-bottom:1px solid var(--line)}
+.emptyIcon{width:76px;height:76px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-family:var(--serif);font-size:35px;margin:0 auto 25px}
+.emptyState h2{margin-bottom:12px;font-size:42px}
+.emptyState p{max-width:340px;margin:0 auto 25px}
+.summary{position:sticky;top:100px;padding:30px;background:var(--surface);border:1px solid var(--line)}
+.summary .eyebrow{margin-bottom:20px}
+.summary h2{font-size:39px;margin-bottom:25px}
+.summaryLine{display:flex;justify-content:space-between;gap:18px;padding:15px 0;border-bottom:1px solid var(--line);font-size:11px;color:var(--muted)}
+.summaryLine strong{font-weight:500;color:var(--text);white-space:nowrap}
+.summaryLine.total{font-size:14px;color:var(--text);padding:22px 0}
+.summaryLine.total strong{font-size:22px;font-family:var(--serif);color:var(--gold)}
+.summaryNote{font-size:10px;line-height:1.8;margin:18px 0 22px}
+.summary .btn{width:100%}
+.continueLink{display:block;text-align:center;margin-top:20px;font-size:10px;color:var(--muted);text-decoration:underline;text-underline-offset:5px}
+.continueLink:hover{color:var(--gold)}
+.secureNote{display:flex;justify-content:center;gap:8px;margin-top:22px;font-size:9px;color:var(--muted);letter-spacing:.5px}
+.recommendations{padding-top:90px}
+.recommendHead{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:30px}
+.recommendHead h2{font-size:45px;margin-top:15px}
+.recommendHead a{font-size:10px;color:var(--gold)}
+.recommendGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.recommendCard{border:1px solid var(--line);padding:18px;transition:transform .3s,border-color .3s}
+.recommendCard:hover{transform:translateY(-5px);border-color:var(--gold)}
+.recVisual{height:170px;display:grid;place-items:center;background:radial-gradient(ellipse at center,#4b3920,var(--surface) 75%);position:relative;overflow:hidden}
+body.light .recVisual{background:radial-gradient(ellipse at center,#d7c49e,var(--surface) 75%)}
+.recVisual:before{content:"";position:absolute;width:120px;height:120px;border:1px solid var(--line);border-radius:50%}
+.recBottle{position:relative;z-index:1;width:55px;height:91px;border:1px solid var(--gold);border-radius:8px 8px 13px 13px;background:linear-gradient(90deg,#1b1711,#b49a5c 25%,#312719 55%,#17140f);box-shadow:0 15px 25px #0005}
+.recBottle:before{content:"";position:absolute;left:17px;top:-14px;width:20px;height:14px;background:linear-gradient(90deg,#6b552e,#d5bb7d,#6b552e);border:1px solid var(--gold)}
+.recBottle:after{content:"N";position:absolute;left:0;right:0;top:32px;text-align:center;font-family:var(--serif);color:#ead5a6;font-size:20px}
+.recCardInfo{padding-top:19px}
+.recCardInfo h3{font-size:26px;margin-bottom:4px}
+.recCardInfo .arabic{font-size:11px;color:var(--gold)}
+.recBottom{display:flex;align-items:center;justify-content:space-between;margin-top:18px}
+.recPrice{font-size:12px}
+.addBtn{width:34px;height:34px;border:1px solid var(--line);background:transparent;color:var(--gold);font-size:19px;transition:.2s}
+.addBtn:hover{background:var(--gold);color:#111}
+.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);padding:15px 22px;background:var(--gold);color:#17140f;font-size:11px;z-index:100;opacity:0;pointer-events:none;transition:.3s;max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{border-top:1px solid var(--line);padding:45px 0 22px}
+.footerTop{display:flex;justify-content:space-between;gap:35px;padding-bottom:35px}
+.footerBrand p{max-width:280px;margin-top:15px;font-size:11px}
+.footerLinks{display:flex;gap:55px}
+.footerCol h4{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:500}
+.footerCol a{display:block;font-size:11px;color:var(--muted);margin:12px 0}
+.footerCol a:hover{color:var(--gold)}
+.footerBottom{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:9px;letter-spacing:1px;color:var(--muted)}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+html[dir="rtl"] body{font-family:"Noto Sans Arabic",var(--sans)}
+html[dir="rtl"] .eyebrow{letter-spacing:0}
+html[dir="rtl"] .eyebrow:before{display:none}
+html[dir="rtl"] .eyebrow:after{content:"";width:30px;height:1px;background:var(--gold)}
+html[dir="rtl"] h1{letter-spacing:0;line-height:1.2}
+html[dir="rtl"] .navlinks a,html[dir="rtl"] .btn{letter-spacing:0}
+html[dir="rtl"] .itemRight{align-items:start}
+html[dir="rtl"] .footerCol h4,html[dir="rtl"] .footerBottom{letter-spacing:0}
+@media(max-width:900px){
+ .navlinks{gap:15px}.navlinks a{font-size:9px}
+ .cartLayout{grid-template-columns:1fr;gap:35px}
+ .summary{position:static}
+}
+@media(max-width:700px){
+ header{height:68px}.logo{font-size:25px}
+ .menuBtn{display:block}
+ .navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:20px 6%;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
+ .navlinks.open{display:flex}
+ .navlinks a{padding:14px 0;border-bottom:1px solid var(--line);font-size:11px}
+ .actions{gap:11px}.cartlink{font-size:9px}
+ .pageHero{padding:55px 0 35px}
+ .pageHero h1{font-size:clamp(58px,15vw,85px)}
+ .cartItem{grid-template-columns:85px 1fr;gap:15px}
+ .productVisual{height:105px}
+ .itemName{font-size:24px}
+ .itemRight{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between}
+ .recommendations{padding-top:65px}
+ .recommendHead{align-items:start;flex-direction:column}
+ .recommendGrid{grid-template-columns:1fr}
+ .recommendCard{display:grid;grid-template-columns:120px 1fr;gap:15px;padding:12px}
+ .recVisual{height:145px}
+ .recCardInfo{padding-top:7px}
+ .recCardInfo h3{font-size:24px}
+ .footerTop{flex-direction:column}
+ .footerLinks{gap:40px;flex-wrap:wrap}
+ .footerBottom{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="container nav">
+  <a class="logo" href="index.html">ZAYR<span>ŪN</span></a>
+  <nav class="navlinks" id="navlinks">
+   <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+   <a href="shop.html" data-en="Collection" data-ar="المجموعة">Collection</a>
+   <a href="about.html" data-en="Our Story" data-ar="قصتنا">Our Story</a>
+   <a href="contact.html" data-en="Contact" data-ar="تواصل معنا">Contact</a>
+  </nav>
+  <div class="actions">
+   <button class="iconbtn" id="langBtn" type="button">عربي</button>
+   <button class="iconbtn" id="themeBtn" type="button" aria-label="Toggle theme">☼</button>
+   <a class="cartlink" href="cart.html"><span data-en="BAG" data-ar="الحقيبة">BAG</span> (<span id="cartCount">0</span>)</a>
+   <button class="menuBtn" id="menuBtn" type="button" aria-label="Open navigation">☰</button>
+  </div>
+ </div>
+</header>
+
+<main>
+ <section class="pageHero">
+  <div class="container">
+   <div class="eyebrow" data-en="Considered choices. Exceptional details." data-ar="اختيارات مدروسة. تفاصيل استثنائية.">Considered choices. Exceptional details.</div>
+   <h1 data-en="Your bag.<br><em>Your signature.</em>" data-ar="حقيبتك.<br><em>عطرك الخاص.</em>">Your bag.<br><em>Your signature.</em></h1>
+   <p data-en="Take a moment. Explore your selection, refine the details, and get ready to discover your next signature scent." data-ar="خذ لحظتك. راجع اختياراتك، وعدّل التفاصيل، واستعد لاكتشاف عطرك القادم.">Take a moment. Explore your selection, refine the details, and get ready to discover your next signature scent.</p>
+   <div class="breadcrumb"><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a><span> / </span><span data-en="Shopping bag" data-ar="حقيبة التسوق">Shopping bag</span></div>
+  </div>
+ </section>
+
+ <section class="container">
+  <div class="cartLayout">
+   <div class="cartMain">
+    <div class="cartHeader">
+     <h2 data-en="Your selection" data-ar="اختياراتك">Your selection</h2>
+     <span id="itemCount">0 ITEMS</span>
+    </div>
+    <div id="cartItems"></div>
+   </div>
+
+   <aside class="summary">
+    <div class="eyebrow" data-en="Your order" data-ar="طلبك">Your order</div>
+    <h2 data-en="The details." data-ar="التفاصيل.">The details.</h2>
+    <div class="summaryLine"><span data-en="Subtotal" data-ar="المجموع الفرعي">Subtotal</span><strong id="subtotal">SAR 0</strong></div>
+    <div class="summaryLine"><span data-en="Shipping" data-ar="الشحن">Shipping</span><strong id="shipping">—</strong></div>
+    <div class="summaryLine total"><span data-en="Estimated total" data-ar="الإجمالي التقديري">Estimated total</span><strong id="total">SAR 0</strong></div>
+    <p class="summaryNote" data-en="Shipping costs and final order details will be confirmed at checkout. No payment is taken on this page." data-ar="سيتم تأكيد تكلفة الشحن وتفاصيل الطلب النهائية عند إتمام الشراء. لا يتم تحصيل أي مبلغ في هذه الصفحة.">Shipping costs and final order details will be confirmed at checkout. No payment is taken on this page.</p>
+    <a class="btn" href="checkout.html" id="checkoutBtn"><span data-en="Proceed to checkout" data-ar="متابعة لإتمام الطلب">Proceed to checkout</span><span>↗</span></a>
+    <a class="continueLink" href="shop.html" data-en="Continue exploring" data-ar="تابع الاستكشاف">Continue exploring</a>
+    <div class="secureNote"><span>◇</span><span data-en="Thoughtfully selected. Elegantly presented." data-ar="اختيار بعناية. وتقديم بأناقة.">Thoughtfully selected. Elegantly presented.</span></div>
+   </aside>
+  </div>
+ </section>
+
+ <section class="container recommendations">
+  <div class="recommendHead">
+   <div>
+    <div class="eyebrow" data-en="Worth discovering" data-ar="يستحق الاكتشاف">Worth discovering</div>
+    <h2 data-en="A scent to remember." data-ar="عطر لا يُنسى.">A scent to remember.</h2>
+   </div>
+   <a href="shop.html" data-en="VIEW ALL FRAGRANCES ↗" data-ar="عرض جميع العطور ↗">VIEW ALL FRAGRANCES ↗</a>
+  </div>
+
+  <div class="recommendGrid">
+   <article class="recommendCard">
+    <div class="recVisual"><div class="recBottle"></div></div>
+    <div class="recCardInfo">
+     <h3 data-en="Oud Royale" data-ar="عود رويال">Oud Royale</h3>
+     <div class="arabic">عود رويال</div>
+     <div class="recBottom"><span class="recPrice">SAR 70</span><button class="addBtn" type="button" data-add="oud" aria-label="Add Oud Royale">+</button></div>
+    </div>
+   </article>
+   <article class="recommendCard">
+    <div class="recVisual"><div class="recBottle"></div></div>
+    <div class="recCardInfo">
+     <h3 data-en="Midnight Musk" data-ar="مسك الليل">Midnight Musk</h3>
+     <div class="arabic">مسك الليل</div>
+     <div class="recBottom"><span class="recPrice">SAR 95</span><button class="addBtn" type="button" data-add="musk" aria-label="Add Midnight Musk">+</button></div>
+    </div>
+   </article>
+   <article class="recommendCard">
+    <div class="recVisual"><div class="recBottle"></div></div>
+    <div class="recCardInfo">
+     <h3 data-en="Royal Amber" data-ar="العنبر الملكي">Royal Amber</h3>
+     <div class="arabic">العنبر الملكي</div>
+     <div class="recBottom"><span class="recPrice">SAR 50</span><button class="addBtn" type="button" data-add="amber" aria-label="Add Royal Amber">+</button></div>
+    </div>
+   </article>
+  </div>
+ </section>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer>
+ <div class="container">
+  <div class="footerTop">
+   <div class="footerBrand">
+    <a class="logo" href="index.html">ZAYRŪN<span>ŪN</span></a>
+    <p data-en="Fragrance with character. A world shaped by depth, elegance and the art of leaving a lasting impression." data-ar="عطور تحمل شخصية خاصة. عالم من العمق والأناقة وفن ترك الأثر.">Fragrance with character. A world shaped by depth, elegance and the art of leaving a lasting impression.</p>
+   </div>
+   <div class="footerLinks">
+    <div class="footerCol">
+     <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+     <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+     <a href="shop.html" data-en="Collection" data-ar="المجموعة">Collection</a>
+     <a href="about.html" data-en="Our Story" data-ar="قصتنا">Our Story</a>
+    </div>
+    <div class="footerCol">
+     <h4 data-en="Assistance" data-ar="المساعدة">Assistance</h4>
+     <a href="contact.html" data-en="Contact us" data-ar="تواصل معنا">Contact us</a>
+     <a href="cart.html" data-en="Shopping bag" data-ar="حقيبة التسوق">Shopping bag</a>
+     <a href="checkout.html" data-en="Checkout" data-ar="إتمام الطلب">Checkout</a>
+    </div>
+   </div>
+  </div>
+  <div class="footerBottom">
+   <span>© <span id="year"></span> ZAYRŪN. <span data-en="ALL RIGHTS RESERVED." data-ar="جميع الحقوق محفوظة.">ALL RIGHTS RESERVED.</span></span>
+   <span data-en="MADE FOR THE MOMENTS THAT MATTER." data-ar="للحظات التي تستحق أن تبقى.">MADE FOR THE MOMENTS THAT MATTER.</span>
+  </div>
+ </div>
+</footer>
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+const products = {
+ oud:{name:"Oud Royale",ar:"عود رويال",price:320},
+ musk:{name:"Midnight Musk",ar:"مسك الليل",price:280},
+ amber:{name:"Royal Amber",ar:"العنبر الملكي",price:350},
+ desert:{name:"Desert Oud",ar:"عود الصحراء",price:390},
+ velvet:{name:"Velvet Musk",ar:"المسك المخملي",price:260},
+ citrus:{name:"Citrus Veil",ar:"ستار الحمضيات",price:240}
+};
+
+let language = localStorage.getItem("ZAYRŪN-language") || "en";
+let theme = localStorage.getItem("ZAYRŪN-theme") || "dark";
+
+function getCart(){
+ try{
+  const value = JSON.parse(localStorage.getItem("ZAYRŪN-cart") || "[]");
+  return Array.isArray(value) ? value : [];
+ }catch{return []}
+}
+
+function saveCart(cart){
+ localStorage.setItem("ZAYRŪN-cart",JSON.stringify(cart));
+}
+
+function money(amount){
+ return "SAR " + Number(amount).toLocaleString("en-US",{maximumFractionDigits:2});
+}
+
+function applyLanguage(){
+ document.documentElement.lang = language;
+ document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+ document.title = language === "ar" ? "حقيبة التسوق | ZAYRŪN" : "Your Bag | ZAYRŪN";
+ $("#langBtn").textContent = language === "en" ? "عربي" : "EN";
+
+ $$("[data-en][data-ar]").forEach(el=>{
+  el.innerHTML = el.getAttribute("data-" + language);
+ });
+}
+
+function applyTheme(){
+ document.body.classList.toggle("light",theme === "light");
+ $("#themeBtn").textContent = theme === "light" ? "☾" : "☼";
+ $("#themeBtn").setAttribute("aria-label",theme === "light" ? "Switch to dark theme" : "Switch to light theme");
+}
+
+function updateCartCount(){
+ $("#cartCount").textContent = getCart().reduce((sum,item)=>sum+(Number(item.quantity)||0),0);
+}
+
+function showToast(en,ar){
+ $("#toast").textContent = language === "ar" ? ar : en;
+ $("#toast").classList.add("show");
+ clearTimeout(showToast.timer);
+ showToast.timer = setTimeout(()=>$("#toast").classList.remove("show"),2400);
+}
+
+function renderCart(){
+ const cart = getCart();
+ const count = cart.reduce((sum,item)=>sum+(Number(item.quantity)||0),0);
+ const subtotal = cart.reduce((sum,item)=>sum+(Number(item.price)||0)*(Number(item.quantity)||0),0);
+
+ $("#itemCount").textContent = language === "ar"
+  ? count + " عناصر"
+  : count + (count === 1 ? " ITEM" : " ITEMS");
+
+ $("#subtotal").textContent = money(subtotal);
+ $("#shipping").textContent = cart.length ? (language === "ar" ? "عند الدفع" : "At checkout") : "—";
+ $("#total").textContent = money(subtotal);
+
+ const checkoutBtn = $("#checkoutBtn");
+ checkoutBtn.style.opacity = cart.length ? "1" : ".45";
+ checkoutBtn.setAttribute("aria-disabled",cart.length ? "false" : "true");
+ checkoutBtn.href = cart.length ? "checkout.html" : "shop.html";
+
+ if(!cart.length){
+  $("#cartItems").innerHTML = `
+   <div class="emptyState">
+    <div class="emptyIcon">◇</div>
+    <h2>${language === "ar" ? "حقيبتك تنتظرك." : "Your bag awaits."}</h2>
+    <p>${language === "ar" ? "لم تختر أي عطر بعد. اكتشف مجموعتنا واعثر على عطرك القادم." : "You haven't selected a fragrance yet. Explore the collection and discover your next signature scent."}</p>
+    <a class="btn" href="shop.html">${language === "ar" ? "استكشف العطور ↗" : "Explore fragrances ↗"}</a>
+   </div>`;
+  updateCartCount();
+  return;
+ }
+
+ $("#cartItems").innerHTML = cart.map((item,index)=>{
+  const product = products[item.id];
+  if(!product) return "";
+  const quantity = Math.max(1,Math.floor(Number(item.quantity)||1));
+  const name = language === "ar" ? product.ar : product.name;
+  const arName = product.ar;
+  return `
+   <article class="cartItem" data-index="${index}">
+    <div class="productVisual"><div class="miniBottle"></div></div>
+    <div class="itemInfo">
+     <h3 class="itemName">${name}</h3>
+     ${language === "en" ? `<div class="itemArabic">${arName}</div>` : ""}
+     <div class="itemMeta">${language === "ar" ? "عطر فاخر · ZAYRŪN" : "EAU DE PARFUM · ZAYRŪN"}</div>
+     <div class="itemPrice">${money(product.price)} ${language === "ar" ? "للقطعة" : "each"}</div>
+     <div class="quantityControl">
+      <button type="button" data-change="${index}" data-delta="-1" aria-label="Decrease quantity">−</button>
+      <span>${quantity}</span>
+      <button type="button" data-change="${index}" data-delta="1" aria-label="Increase quantity">+</button>
+     </div>
+    </div>
+    <div class="itemRight">
+     <div class="linePrice">${money(product.price*quantity)}</div>
+     <button class="removeBtn" type="button" data-remove="${index}">${language === "ar" ? "إزالة" : "REMOVE"}</button>
+    </div>
+   </article>`;
+ }).join("");
+
+ updateCartCount();
+}
+
+$("#cartItems").addEventListener("click",event=>{
+ const change = event.target.closest("[data-change]");
+ const remove = event.target.closest("[data-remove]");
+ const cart = getCart();
+
+ if(change){
+  const index = Number(change.dataset.change);
+  const delta = Number(change.dataset.delta);
+  if(!cart[index]) return;
+  cart[index].quantity = Math.max(0,(Number(cart[index].quantity)||1)+delta);
+  if(cart[index].quantity <= 0) cart.splice(index,1);
+  saveCart(cart);
+  renderCart();
+  return;
+ }
+
+ if(remove){
+  const index = Number(remove.dataset.remove);
+  if(cart[index]){
+   cart.splice(index,1);
+   saveCart(cart);
+   renderCart();
+   showToast("Fragrance removed from your bag.","تمت إزالة العطر من حقيبتك.");
+  }
+ }
+});
+
+$$("[data-add]").forEach(button=>{
+ button.addEventListener("click",()=>{
+  const id = button.dataset.add;
+  const product = products[id];
+  if(!product) return;
+  const cart = getCart();
+  const existing = cart.find(item=>item.id===id);
+  if(existing){
+   existing.quantity = (Number(existing.quantity)||0)+1;
+  }else{
+   cart.push({id,name:product.name,nameAr:product.ar,price:product.price,quantity:1});
+  }
+  saveCart(cart);
+  renderCart();
+  showToast(product.name+" added to your bag.", "تمت إضافة "+product.ar+" إلى حقيبتك.");
+ });
+});
+
+$("#langBtn").addEventListener("click",()=>{
+ language = language === "en" ? "ar" : "en";
+ localStorage.setItem("ZAYRŪN-language",language);
+ applyLanguage();
+ renderCart();
+});
+
+$("#themeBtn").addEventListener("click",()=>{
+ theme = theme === "dark" ? "light" : "dark";
+ localStorage.setItem("ZAYRŪN-theme",theme);
+ applyTheme();
+});
+
+$("#menuBtn").addEventListener("click",()=>{
+ const nav = $("#navlinks");
+ nav.classList.toggle("open");
+ $("#menuBtn").textContent = nav.classList.contains("open") ? "✕" : "☰";
+});
+
+$("#navlinks").querySelectorAll("a").forEach(link=>{
+ link.addEventListener("click",()=>{
+  $("#navlinks").classList.remove("open");
+  $("#menuBtn").textContent = "☰";
+ });
+});
+
+$("#year").textContent = new Date().getFullYear();
+applyLanguage();
+applyTheme();
+renderCart();
+</script>
+</body>
+</html>

@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — ZAYRŪN Parfums</title>
+<meta name="description" content="Complete your ZAYRŪN fragrance selection. A luxury perfume experience.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#10100f;--surface:#181816;--surface2:#20201d;
+  --text:#f3efe6;--muted:#a9a398;--line:rgba(218,190,133,.19);
+  --gold:#c9a96e;--gold2:#ead3a0;--input:#141412;
+  --shadow:0 25px 70px rgba(0,0,0,.18);
+}
+body.light{
+  --bg:#f7f4ee;--surface:#fffdf8;--surface2:#eee9df;
+  --text:#25221d;--muted:#777064;--line:rgba(113,86,42,.2);
+  --gold:#94713b;--gold2:#b08b50;--input:#faf8f3;
+  --shadow:0 25px 70px rgba(67,50,23,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;transition:background .35s,color .35s}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+::selection{background:var(--gold);color:#111}
+.topline{height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),transparent)}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 91%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{max-width:1240px;margin:auto;padding:20px 5%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:34px;letter-spacing:7px;font-weight:600}
+.logo span{color:var(--gold)}
+.navlinks{display:flex;align-items:center;gap:26px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.navlinks a{transition:color .2s}
+.navlinks a:hover,.navlinks a.active{color:var(--gold)}
+.navtools{display:flex;gap:9px;align-items:center}
+.iconbtn{border:1px solid var(--line);background:transparent;color:var(--text);height:38px;min-width:40px;padding:0 10px;border-radius:3px;font-size:11px;transition:.25s}
+.iconbtn:hover{border-color:var(--gold);color:var(--gold)}
+.page{max-width:1240px;margin:auto;padding:60px 5% 100px}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px}
+.eyebrow:before{content:"";width:32px;height:1px;background:var(--gold)}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500}
+h1{font-size:clamp(48px,7vw,82px);line-height:.98;margin:18px 0}
+h1 em{color:var(--gold);font-weight:400}
+.intro{color:var(--muted);font-size:13px;line-height:1.9;max-width:510px}
+.steps{display:flex;gap:22px;margin:35px 0 48px;border-bottom:1px solid var(--line);padding-bottom:20px}
+.step{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);display:flex;gap:9px;align-items:center}
+.step b{border:1px solid var(--line);border-radius:50%;width:25px;height:25px;display:grid;place-items:center;font-size:10px;font-weight:400}
+.step.current{color:var(--gold)}
+.step.current b{border-color:var(--gold);background:var(--gold);color:#17140f}
+.layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.8fr);gap:48px;align-items:start}
+.section{margin-bottom:37px}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+.sectionhead h2{font-size:30px;margin:0}
+.sectionhead small{font-size:10px;color:var(--muted);letter-spacing:1px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:9px;min-width:0}
+.field.full{grid-column:1/-1}
+label{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
+input,select,textarea{width:100%;border:1px solid var(--line);background:var(--input);color:var(--text);padding:15px 14px;border-radius:2px;outline:none;transition:border .25s,box-shadow .25s}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 10%,transparent)}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.65}
+select option{background:var(--surface);color:var(--text)}
+textarea{min-height:90px;resize:vertical}
+.hint{font-size:10px;color:var(--muted);line-height:1.6}
+.panel{background:var(--surface);border:1px solid var(--line);padding:27px;box-shadow:var(--shadow)}
+.summary-title{font-family:'Cormorant Garamond',serif;font-size:32px;margin:0}
+.summary-sub{color:var(--muted);font-size:11px;margin-top:6px;margin-bottom:25px}
+.product-list{display:flex;flex-direction:column;gap:20px}
+.product{display:grid;grid-template-columns:65px 1fr auto;gap:14px;align-items:center}
+.bottle{height:78px;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--gold) 14%,var(--surface2)),var(--surface2) 70%);position:relative;overflow:hidden}
+.bottle:after{content:"";position:absolute;width:90px;height:90px;border:1px solid color-mix(in srgb,var(--gold) 14%,transparent);border-radius:50%}
+.bottle-shape{height:45px;width:28px;background:linear-gradient(90deg,#29231a,#927345 35%,#c9a96e 52%,#5b4325);border:1px solid #bba16d;border-radius:5px 5px 8px 8px;position:relative;z-index:1;box-shadow:5px 5px 12px #0003}
+.bottle-shape:before{content:"";position:absolute;width:11px;height:9px;background:#c5a76e;left:7px;top:-10px;border-radius:2px 2px 0 0}
+.bottle-shape:after{content:"N";position:absolute;top:17px;left:0;right:0;text-align:center;color:#ead6a8;font:12px 'Cormorant Garamond',serif}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.15}
+.product-ar{font-size:11px;color:var(--muted);margin-top:4px}
+.product-meta{font-size:10px;color:var(--muted);margin-top:6px}
+.product-price{font-size:12px;white-space:nowrap}
+.remove{border:0;background:transparent;color:var(--muted);font-size:10px;text-decoration:underline;text-underline-offset:3px;padding:0;margin-top:7px}
+.remove:hover{color:var(--gold)}
+.empty{padding:24px 0;text-align:center;color:var(--muted);font-size:13px;line-height:1.8}
+.empty a{color:var(--gold);text-decoration:underline}
+.rule{height:1px;background:var(--line);margin:25px 0}
+.totalrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:15px 0;font-size:12px}
+.totalrow span:first-child{color:var(--muted)}
+.totalrow.grand{font-size:15px;font-weight:600;margin-top:21px}
+.totalrow.grand span:last-child{font-size:22px;color:var(--gold);font-family:'Cormorant Garamond',serif}
+.shipping-note{font-size:10px;color:var(--muted);line-height:1.8;margin-top:16px}
+.payment-option{display:flex;align-items:flex-start;gap:13px;padding:17px;border:1px solid var(--line);background:var(--input)}
+.payment-option input{width:15px;height:15px;accent-color:var(--gold);margin-top:3px}
+.payment-title{font-size:12px}
+.payment-desc{font-size:10px;color:var(--muted);margin-top:5px;line-height:1.6}
+.terms{display:flex;align-items:flex-start;gap:10px;color:var(--muted);font-size:11px;line-height:1.8;margin:24px 0}
+.terms input{width:15px;height:15px;flex-shrink:0;accent-color:var(--gold);margin-top:3px}
+.terms a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
+.cta{width:100%;padding:18px 20px;border:1px solid var(--gold);background:var(--gold);color:#17140f;font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:background .25s,color .25s;display:flex;align-items:center;justify-content:center;gap:15px}
+.cta:hover{background:transparent;color:var(--gold)}
+.cta:disabled{opacity:.45;cursor:not-allowed}
+.secure{display:flex;justify-content:center;gap:9px;align-items:center;color:var(--muted);font-size:10px;margin-top:16px;text-align:center}
+.secure span{color:var(--gold)}
+.demo-warning{border:1px solid var(--line);padding:14px;margin-top:20px;font-size:10px;line-height:1.8;color:var(--muted)}
+.demo-warning strong{color:var(--gold);font-weight:500}
+.notice{display:none;border:1px solid var(--gold);padding:24px;margin-bottom:30px;background:var(--surface)}
+.notice.show{display:block;animation:fadeUp .5s ease both}
+.notice h2{font-size:30px;color:var(--gold);margin-bottom:10px}
+.notice p{font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:12px}
+.notice .cta{margin-top:18px}
+footer{border-top:1px solid var(--line);padding:35px 5%;display:flex;justify-content:space-between;align-items:center;gap:20px;max-width:100%;color:var(--muted);font-size:10px;letter-spacing:.5px}
+footer .footlogo{font-family:'Cormorant Garamond',serif;font-size:23px;letter-spacing:5px;color:var(--text)}
+footer .footlogo span{color:var(--gold)}
+.footlinks{display:flex;gap:18px;flex-wrap:wrap}
+.footlinks a:hover{color:var(--gold)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.reveal{animation:fadeUp .7s ease both}
+body[dir="rtl"]{font-family:'DM Sans',sans-serif}
+body[dir="rtl"] .eyebrow:before{order:2}
+body[dir="rtl"] .steps{flex-direction:row-reverse}
+body[dir="rtl"] .sectionhead,body[dir="rtl"] .totalrow{direction:rtl}
+body[dir="rtl"] .product{direction:rtl}
+body[dir="rtl"] .product-price{text-align:left}
+body[dir="rtl"] .terms{direction:rtl}
+body[dir="rtl"] .secure{direction:rtl}
+body[dir="rtl"] .logo{letter-spacing:4px}
+@media(max-width:900px){
+ .navlinks{gap:13px;font-size:9px}
+ .layout{grid-template-columns:1fr;gap:30px}
+ .summary{order:0}
+ .checkout-form{order:1}
+ .panel{padding:22px}
+}
+@media(max-width:600px){
+ .nav{padding:15px 5%;flex-wrap:wrap}
+ .logo{font-size:28px;letter-spacing:5px}
+ .navlinks{order:3;width:100%;justify-content:space-between;gap:8px;overflow:auto;padding-top:10px;border-top:1px solid var(--line)}
+ .navlinks a{white-space:nowrap;font-size:9px}
+ .navtools{margin-left:auto}
+ .page{padding-top:42px}
+ .steps{gap:12px;justify-content:space-between}
+ .step{font-size:8px;letter-spacing:.7px;gap:5px}
+ .step b{width:22px;height:22px}
+ .fields{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .sectionhead h2{font-size:27px}
+ .panel{padding:18px}
+ footer{flex-direction:column;text-align:center}
+ .footlinks{justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="index.html" aria-label="ZAYRŪN home">ZAYR<span>ŪN</span></a>
+    <div class="navlinks">
+      <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+      <a href="shop.html" data-en="Collection" data-ar="المجموعة">Collection</a>
+      <a href="about.html" data-en="Our Story" data-ar="قصتنا">Our Story</a>
+      <a href="contact.html" data-en="Contact" data-ar="تواصل معنا">Contact</a>
+      <a href="cart.html" data-en="Bag" data-ar="السلة">Bag</a>
+    </div>
+    <div class="navtools">
+      <button class="iconbtn" id="langBtn" type="button" aria-label="Switch language">عربي</button>
+      <button class="iconbtn" id="themeBtn" type="button" aria-label="Switch theme">☼</button>
+    </div>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="eyebrow reveal" data-en="The final touch" data-ar="اللمسة الأخيرة">The final touch</div>
+  <h1 class="reveal" data-en="Almost <em>yours.</em>" data-ar="على بُعد <em>خطوة.</em>">Almost <em>yours.</em></h1>
+  <p class="intro reveal" data-en="Your chosen fragrance, carefully considered. Review your selection and enter your delivery details below." data-ar="عطرك المختار بعناية. راجع اختياراتك وأدخل تفاصيل التوصيل أدناه.">Your chosen fragrance, carefully considered. Review your selection and enter your delivery details below.</p>
+
+  <div class="steps">
+    <div class="step"><b>01</b><span data-en="Your selection" data-ar="اختيارك">Your selection</span></div>
+    <div class="step current"><b>02</b><span data-en="Delivery details" data-ar="بيانات التوصيل">Delivery details</span></div>
+    <div class="step"><b>03</b><span data-en="Confirmation" data-ar="التأكيد">Confirmation</span></div>
+  </div>
+
+  <div class="notice" id="successNotice" role="status" aria-live="polite">
+    <h2 data-en="Demo preview complete." data-ar="اكتملت معاينة الطلب.">Demo preview complete.</h2>
+    <p data-en="Your checkout details passed the browser's form validation. This is only a website demo: no order was sent, no details were saved to a store, and no payment was taken." data-ar="اجتازت بياناتك التحقق في المتصفح. هذه معاينة تجريبية فقط: لم يتم إرسال أي طلب أو حفظ البيانات في متجر، ولم يتم تحصيل أي مبلغ.">Your checkout details passed the browser's form validation. This is only a website demo: no order was sent, no details were saved to a store, and no payment was taken.</p>
+    <p data-en="To accept real orders, connect a secure server, order database, delivery workflow, and payment provider before launch." data-ar="لاستقبال طلبات حقيقية، يجب ربط الموقع بخادم آمن وقاعدة بيانات للطلبات ونظام توصيل ومزود دفع قبل الإطلاق.">To accept real orders, connect a secure server, order database, delivery workflow, and payment provider before launch.</p>
+    <button class="cta" type="button" onclick="document.getElementById('successNotice').classList.remove('show');document.getElementById('customerForm').scrollIntoView({behavior:'smooth'})" data-en="Back to details" data-ar="العودة إلى البيانات">Back to details</button>
+  </div>
+
+  <div class="layout">
+    <form id="customerForm" class="checkout-form" novalidate>
+      <section class="section">
+        <div class="sectionhead">
+          <h2 data-en="01 — Your details" data-ar="٠١ — بياناتك">01 — Your details</h2>
+          <small data-en="REQUIRED FIELDS *" data-ar="الحقول المطلوبة *">REQUIRED FIELDS *</small>
+        </div>
+        <div class="fields">
+          <div class="field">
+            <label for="firstName" data-en="First name *" data-ar="الاسم الأول *">First name *</label>
+            <input id="firstName" name="firstName" autocomplete="given-name" required maxlength="60" placeholder="e.g. Hamza">
+          </div>
+          <div class="field">
+            <label for="lastName" data-en="Last name *" data-ar="اسم العائلة *">Last name *</label>
+            <input id="lastName" name="lastName" autocomplete="family-name" required maxlength="60" placeholder="e.g. Farrukh">
+          </div>
+          <div class="field">
+            <label for="email" data-en="Email address *" data-ar="البريد الإلكتروني *">Email address *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required maxlength="120" placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="phone" data-en="Saudi phone number *" data-ar="رقم الجوال السعودي *">Saudi phone number *</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="+966 5X XXX XXXX">
+            <span class="hint" data-en="Include your country code, e.g. +966." data-ar="أدخل رمز الدولة، مثل ‎+966.">Include your country code, e.g. +966.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="sectionhead">
+          <h2 data-en="02 — Delivery address" data-ar="٠٢ — عنوان التوصيل">02 — Delivery address</h2>
+        </div>
+        <div class="fields">
+          <div class="field full">
+            <label for="address" data-en="Street address *" data-ar="عنوان الشارع *">Street address *</label>
+            <input id="address" name="address" autocomplete="street-address" required maxlength="180" placeholder="Street, building, apartment">
+          </div>
+          <div class="field">
+            <label for="city" data-en="City *" data-ar="المدينة *">City *</label>
+            <select id="city" name="city" autocomplete="address-level2" required>
+              <option value="" data-en="Select your city" data-ar="اختر مدينتك">Select your city</option>
+              <option value="Riyadh">Riyadh — الرياض</option>
+              <option value="Jeddah">Jeddah — جدة</option>
+              <option value="Dammam">Dammam — الدمام</option>
+              <option value="Al Khobar">Al Khobar — الخبر</option>
+              <option value="Dhahran">Dhahran — الظهران</option>
+              <option value="Jubail">Jubail — الجبيل</option>
+              <option value="Makkah">Makkah — مكة المكرمة</option>
+              <option value="Madinah">Madinah — المدينة المنورة</option>
+              <option value="Taif">Taif — الطائف</option>
+              <option value="Abha">Abha — أبها</option>
+              <option value="Tabuk">Tabuk — تبوك</option>
+              <option value="Other">Other city — مدينة أخرى</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="postal" data-en="Postal code *" data-ar="الرمز البريدي *">Postal code *</label>
+            <input id="postal" name="postal" autocomplete="postal-code" inputmode="numeric" required maxlength="10" placeholder="e.g. 31952">
+          </div>
+          <div class="field full">
+            <label for="notes" data-en="Delivery notes (optional)" data-ar="ملاحظات التوصيل (اختياري)">Delivery notes (optional)</label>
+            <textarea id="notes" name="notes" maxlength="300" placeholder="Anything the delivery team should know?"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="sectionhead">
+          <h2 data-en="03 — Payment preference" data-ar="٠٣ — طريقة الدفع المفضلة">03 — Payment preference</h2>
+        </div>
+        <label class="payment-option">
+          <input type="radio" name="payment" value="cod" checked>
+          <span>
+            <span class="payment-title" data-en="Cash on delivery (planned)" data-ar="الدفع عند الاستلام (مخطط له)">Cash on delivery (planned)</span>
+            <span class="payment-desc" style="display:block" data-en="Shown as a demo option only. No payment or delivery is arranged by this page." data-ar="خيار تجريبي فقط. هذه الصفحة لا ترتب الدفع أو التوصيل فعلياً.">Shown as a demo option only. No payment or delivery is arranged by this page.</span>
+          </span>
+        </label>
+      </section>
+
+      <label class="terms">
+        <input type="checkbox" id="agree" required>
+        <span data-en="I have reviewed my details and understand this is a demonstration checkout, not a live purchase." data-ar="راجعت بياناتي وأفهم أن صفحة الدفع هذه تجريبية وليست عملية شراء فعلية.">I have reviewed my details and understand this is a demonstration checkout, not a live purchase.</span>
+      </label>
+
+      <button type="submit" class="cta" id="placeOrder">
+        <span data-en="Preview demo order" data-ar="معاينة الطلب التجريبي">Preview demo order</span>
+        <span aria-hidden="true">↗</span>
+      </button>
+      <div class="secure"><span>✧</span><span data-en="DEMO ONLY · NO PAYMENT TAKEN" data-ar="تجريبي فقط · لا يتم تحصيل أي مبلغ">DEMO ONLY · NO PAYMENT TAKEN</span></div>
+    </form>
+
+    <aside class="summary">
+      <div class="panel">
+        <h2 class="summary-title" data-en="Your selection" data-ar="اختياراتك">Your selection</h2>
+        <p class="summary-sub" data-en="A little luxury, chosen by you." data-ar="لمسة من الفخامة، باختيارك.">A little luxury, chosen by you.</p>
+        <div id="productList" class="product-list"></div>
+        <div class="rule"></div>
+        <div class="totalrow">
+          <span data-en="Subtotal" data-ar="المجموع الفرعي">Subtotal</span>
+          <span id="subtotal">SAR 0.00</span>
+        </div>
+        <div class="totalrow">
+          <span data-en="Estimated shipping" data-ar="تكلفة التوصيل التقديرية">Estimated shipping</span>
+          <span id="shipping">SAR 20.00</span>
+        </div>
+        <div class="totalrow grand">
+          <span data-en="Estimated total" data-ar="الإجمالي التقديري">Estimated total</span>
+          <span id="total">SAR 20.00</span>
+        </div>
+        <p class="shipping-note" data-en="Shipping is a sample estimate of SAR 20 for this demo. Actual shipping rates, service areas, and final charges must be configured before launch." data-ar="رسوم التوصيل التقديرية في هذه المعاينة هي ٢٠ ريالاً. يجب إعداد رسوم التوصيل الفعلية ومناطق الخدمة والمبالغ النهائية قبل إطلاق المتجر.">Shipping is a sample estimate of SAR 20 for this demo. Actual shipping rates, service areas, and final charges must be configured before launch.</p>
+        <div class="demo-warning">
+          <strong data-en="A note on this demo" data-ar="ملاحظة حول هذه المعاينة">A note on this demo</strong><br>
+          <span data-en="Your cart is read from this browser only. This page does not transmit your personal details to ZAYRŪN or create a real order." data-ar="تتم قراءة السلة من هذا المتصفح فقط. لا ترسل هذه الصفحة بياناتك الشخصية إلى ZAYRŪN ولا تنشئ طلباً حقيقياً.">Your cart is read from this browser only. This page does not transmit your personal details to ZAYRŪN or create a real order.</span>
+        </div>
+        <p style="margin:22px 0 0;font-size:11px;color:var(--muted)">
+          <a href="cart.html" style="color:var(--gold);text-decoration:underline;text-underline-offset:4px" data-en="← Return to bag" data-ar="← العودة إلى السلة">← Return to bag</a>
+        </p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <a class="footlogo" href="index.html">ZAYRŪN<span>ŪN</span></a>
+  <div class="footlinks">
+    <a href="shop.html" data-en="Collection" data-ar="المجموعة">Collection</a>
+    <a href="about.html" data-en="Our Story" data-ar="قصتنا">Our Story</a>
+    <a href="contact.html" data-en="Contact" data-ar="تواصل معنا">Contact</a>
+  </div>
+  <span>© 2026 ZAYRŪN PARFUMS</span>
+</footer>
+
+<script>
+const CATALOG = {
+  oud:    {name:"Oud Royale",   ar:"عود رويال",       price:320},
+  musk:   {name:"Midnight Musk",ar:"مسك الليل",       price:280},
+  amber:  {name:"Royal Amber",  ar:"العنبر الملكي",   price:350},
+  desert: {name:"Desert Oud",   ar:"عود الصحراء",     price:390},
+  velvet: {name:"Velvet Musk",  ar:"المسك المخملي",   price:260},
+  citrus: {name:"Citrus Veil",  ar:"ستار الحمضيات",   price:240}
+};
+
+const CART_KEY = "ZAYRŪN-cart";
+const THEME_KEY = "ZAYRŪN-theme";
+const LANG_KEY = "ZAYRŪN-language";
+const SHIPPING_FEE = 20;
+
+let language = localStorage.getItem(LANG_KEY) || "en";
+let cart = readCart();
+
+function readCart(){
+  try {
+    const stored = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+    if (!Array.isArray(stored)) return [];
+    return stored.filter(item =>
+      item && CATALOG[item.id] &&
+      Number.isFinite(Number(item.quantity)) &&
+      Number(item.quantity) > 0
+    ).map(item => ({
+      id:item.id,
+      quantity:Math.min(99,Math.floor(Number(item.quantity)))
+    }));
+  } catch {
+    return [];
+  }
+}
+
+function saveCart(){
+  localStorage.setItem(CART_KEY, JSON.stringify(cart.map(item => {
+    const product = CATALOG[item.id];
+    return {
+      id:item.id,
+      name:product.name,
+      nameAr:product.ar,
+      price:product.price,
+      quantity:item.quantity
+    };
+  })));
+}
+
+function money(value){
+  return new Intl.NumberFormat(language === "ar" ? "ar-SA" : "en-SA",{
+    style:"currency",
+    currency:"SAR",
+    minimumFractionDigits:2
+  }).format(value);
+}
+
+function totalItems(){
+  return cart.reduce((sum,item)=>sum+item.quantity,0);
+}
+
+function subtotalValue(){
+  return cart.reduce((sum,item)=>sum+CATALOG[item.id].price*item.quantity,0);
+}
+
+function renderCart(){
+  const list = document.getElementById("productList");
+  const subtotal = subtotalValue();
+  const hasItems = cart.length > 0;
+
+  if(!hasItems){
+    list.innerHTML = `
+      <div class="empty">
+        <p>${language==="ar"?"سلتك فارغة حالياً.":"Your bag is currently empty."}</p>
+        <a href="shop.html">${language==="ar"?"اكتشف المجموعة ←":"Explore the collection →"}</a>
+      </div>`;
+  } else {
+    list.innerHTML = cart.map(item=>{
+      const p = CATALOG[item.id];
+      const name = language==="ar" ? p.ar : p.name;
+      return `
+        <div class="product">
+          <div class="bottle"><div class="bottle-shape"></div></div>
+          <div>
+            <div class="product-name">${escapeHTML(name)}</div>
+            ${language==="ar" ? `<div class="product-ar">${escapeHTML(p.name)}</div>` : `<div class="product-ar">${escapeHTML(p.ar)}</div>`}
+            <div class="product-meta">${language==="ar"?"الكمية":"Qty"}: ${item.quantity}</div>
+            <button class="remove" type="button" data-remove="${item.id}">${language==="ar"?"إزالة":"Remove"}</button>
+          </div>
+          <div class="product-price">${money(p.price*item.quantity)}</div>
+        </div>`;
+    }).join("");
+  }
+
+  const shipping = hasItems ? SHIPPING_FEE : 0;
+  document.getElementById("subtotal").textContent = money(subtotal);
+  document.getElementById("shipping").textContent = money(shipping);
+  document.getElementById("total").textContent = money(subtotal+shipping);
+  document.getElementById("placeOrder").disabled = !hasItems;
+  document.querySelectorAll(".navlinks a[href='cart.html']").forEach(a=>{
+    a.textContent = language==="ar" ? `السلة (${totalItems()})` : `Bag (${totalItems()})`;
+    a.setAttribute("data-en",`Bag (${totalItems()})`);
+    a.setAttribute("data-ar",`السلة (${totalItems()})`);
+  });
+}
+
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g, char=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[char]);
+}
+
+function applyLanguage(){
+  document.documentElement.lang = language==="ar" ? "ar" : "en";
+  document.documentElement.dir = language==="ar" ? "rtl" : "ltr";
+  document.body.dir = language==="ar" ? "rtl" : "ltr";
+  document.getElementById("langBtn").textContent = language==="ar" ? "EN" : "عربي";
+
+  document.querySelectorAll("[data-en][data-ar]").forEach(el=>{
+    if(el.tagName==="OPTION"){
+      el.textContent = language==="ar" ? el.dataset.ar : el.dataset.en;
+    } else {
+      el.innerHTML = language==="ar" ? el.dataset.ar : el.dataset.en;
+    }
+  });
+
+  document.getElementById("firstName").placeholder = language==="ar" ? "مثال: حمزة" : "e.g. Hamza";
+  document.getElementById("lastName").placeholder = language==="ar" ? "مثال: فرخ" : "e.g. Farrukh";
+  document.getElementById("email").placeholder = "you@example.com";
+  document.getElementById("phone").placeholder = "+966 5X XXX XXXX";
+  document.getElementById("address").placeholder = language==="ar" ? "الشارع، المبنى، الشقة" : "Street, building, apartment";
+  document.getElementById("postal").placeholder = language==="ar" ? "مثال: 31952" : "e.g. 31952";
+  document.getElementById("notes").placeholder = language==="ar" ? "هل توجد ملاحظات لفريق التوصيل؟" : "Anything the delivery team should know?";
+
+  renderCart();
+}
+
+function applyTheme(){
+  const theme = localStorage.getItem(THEME_KEY) || "dark";
+  document.body.classList.toggle("light",theme==="light");
+  document.getElementById("themeBtn").textContent = theme==="light" ? "☾" : "☼";
+  document.getElementById("themeBtn").setAttribute(
+    "aria-label", theme==="light" ? "Switch to dark theme" : "Switch to light theme"
+  );
+}
+
+document.getElementById("langBtn").addEventListener("click",()=>{
+  language = language==="en" ? "ar" : "en";
+  localStorage.setItem(LANG_KEY,language);
+  applyLanguage();
+});
+
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  const current = localStorage.getItem(THEME_KEY) || "dark";
+  localStorage.setItem(THEME_KEY,current==="dark"?"light":"dark");
+  applyTheme();
+});
+
+document.getElementById("productList").addEventListener("click",event=>{
+  const button = event.target.closest("[data-remove]");
+  if(!button) return;
+  cart = cart.filter(item=>item.id!==button.dataset.remove);
+  saveCart();
+  renderCart();
+});
+
+document.getElementById("customerForm").addEventListener("submit",event=>{
+  event.preventDefault();
+
+  if(!cart.length){
+    window.location.href = "shop.html";
+    return;
+  }
+
+  const form = event.currentTarget;
+  if(!form.reportValidity()) return;
+
+  const phone = document.getElementById("phone").value.trim();
+  const phoneDigits = phone.replace(/\D/g,"");
+  if(phoneDigits.length < 9 || phoneDigits.length > 15){
+    document.getElementById("phone").setCustomValidity(
+      language==="ar" ? "يرجى إدخال رقم هاتف صحيح مع رمز الدولة." : "Please enter a valid phone number with country code."
+    );
+    document.getElementById("phone").reportValidity();
+    return;
+  }
+  document.getElementById("phone").setCustomValidity("");
+
+  const notice = document.getElementById("successNotice");
+  notice.classList.add("show");
+  notice.scrollIntoView({behavior:"smooth",block:"center"});
+});
+
+document.getElementById("phone").addEventListener("input",()=>{
+  document.getElementById("phone").setCustomValidity("");
+});
+
+applyTheme();
+applyLanguage();
+</script>
+</body>
+</html>
